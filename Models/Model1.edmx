@@ -1,0 +1,349 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="solutecModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="advances">
+          <Key>
+            <PropertyRef Name="id_advance" />
+          </Key>
+          <Property Name="id_advance" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="advance_type" Type="smallint" Nullable="false" />
+          <Property Name="advance_detail" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="time" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="id_service" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="brands">
+          <Key>
+            <PropertyRef Name="id_brand" />
+          </Key>
+          <Property Name="id_brand" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="commercial_name" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="nit" Type="varchar" MaxLength="1" />
+          <Property Name="nrc" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="start_date" Type="date" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="customers">
+          <Key>
+            <PropertyRef Name="id_customer" />
+          </Key>
+          <Property Name="id_customer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="full_name" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="nrc" Type="varchar" MaxLength="1" />
+          <Property Name="nit" Type="varchar" MaxLength="1" />
+          <Property Name="dui" Type="varchar" MaxLength="1" />
+          <Property Name="address" Type="varchar" MaxLength="1" />
+          <Property Name="phone_number" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="1" />
+          <Property Name="customer_type" Type="smallint" Nullable="false" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="services">
+          <Key>
+            <PropertyRef Name="id_service" />
+          </Key>
+          <Property Name="id_service" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_customer" Type="int" Nullable="false" />
+          <Property Name="id_brand" Type="int" />
+          <Property Name="unique_reference" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="commercial_invoice" Type="varchar" MaxLength="1" />
+          <Property Name="purchase_date" Type="date" />
+          <Property Name="model" Type="varchar" MaxLength="1" />
+          <Property Name="is_warranty" Type="bit" Nullable="false" />
+          <Property Name="technical_operator" Type="int" Nullable="false" />
+          <Property Name="in_date" Type="datetime" Nullable="false" />
+          <Property Name="out_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="id_user" />
+          </Key>
+          <Property Name="id_user" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="user_type" Type="smallint" Nullable="false" />
+          <Property Name="is_active" Type="bit" />
+        </EntityType>
+        <Association Name="FK__advances__id_ser__4316F928">
+          <End Role="services" Type="Self.services" Multiplicity="1" />
+          <End Role="advances" Type="Self.advances" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="services">
+              <PropertyRef Name="id_service" />
+            </Principal>
+            <Dependent Role="advances">
+              <PropertyRef Name="id_service" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__services__id_cus__3F466844">
+          <End Role="customers" Type="Self.customers" Multiplicity="1" />
+          <End Role="services" Type="Self.services" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customers">
+              <PropertyRef Name="id_customer" />
+            </Principal>
+            <Dependent Role="services">
+              <PropertyRef Name="id_customer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__services__techni__403A8C7D">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="services" Type="Self.services" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="services">
+              <PropertyRef Name="technical_operator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="solutecModelStoreContainer">
+          <EntitySet Name="advances" EntityType="Self.advances" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="brands" EntityType="Self.brands" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="customers" EntityType="Self.customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="services" EntityType="Self.services" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__advances__id_ser__4316F928" Association="Self.FK__advances__id_ser__4316F928">
+            <End Role="services" EntitySet="services" />
+            <End Role="advances" EntitySet="advances" />
+          </AssociationSet>
+          <AssociationSet Name="FK__services__id_cus__3F466844" Association="Self.FK__services__id_cus__3F466844">
+            <End Role="customers" EntitySet="customers" />
+            <End Role="services" EntitySet="services" />
+          </AssociationSet>
+          <AssociationSet Name="FK__services__techni__403A8C7D" Association="Self.FK__services__techni__403A8C7D">
+            <End Role="users" EntitySet="users" />
+            <End Role="services" EntitySet="services" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="solutecModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="advances">
+          <Key>
+            <PropertyRef Name="id_advance" />
+          </Key>
+          <Property Name="id_advance" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="advance_type" Type="Int16" Nullable="false" />
+          <Property Name="advance_detail" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="time" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="id_service" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="services" Relationship="Self.FK__advances__id_ser__4316F928" FromRole="advances" ToRole="services" />
+        </EntityType>
+        <EntityType Name="brands">
+          <Key>
+            <PropertyRef Name="id_brand" />
+          </Key>
+          <Property Name="id_brand" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="commercial_name" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nit" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="nrc" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="start_date" Type="DateTime" Precision="0" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="customers">
+          <Key>
+            <PropertyRef Name="id_customer" />
+          </Key>
+          <Property Name="id_customer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="full_name" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nrc" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="nit" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="dui" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="phone_number" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="customer_type" Type="Int16" Nullable="false" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="services" Relationship="Self.FK__services__id_cus__3F466844" FromRole="customers" ToRole="services" />
+        </EntityType>
+        <EntityType Name="services">
+          <Key>
+            <PropertyRef Name="id_service" />
+          </Key>
+          <Property Name="id_service" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_customer" Type="Int32" Nullable="false" />
+          <Property Name="id_brand" Type="Int32" />
+          <Property Name="unique_reference" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="commercial_invoice" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="purchase_date" Type="DateTime" Precision="0" />
+          <Property Name="model" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="is_warranty" Type="Boolean" Nullable="false" />
+          <Property Name="technical_operator" Type="Int32" Nullable="false" />
+          <Property Name="in_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="out_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="advances" Relationship="Self.FK__advances__id_ser__4316F928" FromRole="services" ToRole="advances" />
+          <NavigationProperty Name="customers" Relationship="Self.FK__services__id_cus__3F466844" FromRole="services" ToRole="customers" />
+          <NavigationProperty Name="users" Relationship="Self.FK__services__techni__403A8C7D" FromRole="services" ToRole="users" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="id_user" />
+          </Key>
+          <Property Name="id_user" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="user_type" Type="Int16" Nullable="false" />
+          <Property Name="is_active" Type="Boolean" />
+          <NavigationProperty Name="services" Relationship="Self.FK__services__techni__403A8C7D" FromRole="users" ToRole="services" />
+        </EntityType>
+        <Association Name="FK__advances__id_ser__4316F928">
+          <End Role="services" Type="Self.services" Multiplicity="1" />
+          <End Role="advances" Type="Self.advances" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="services">
+              <PropertyRef Name="id_service" />
+            </Principal>
+            <Dependent Role="advances">
+              <PropertyRef Name="id_service" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__services__id_cus__3F466844">
+          <End Role="customers" Type="Self.customers" Multiplicity="1" />
+          <End Role="services" Type="Self.services" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customers">
+              <PropertyRef Name="id_customer" />
+            </Principal>
+            <Dependent Role="services">
+              <PropertyRef Name="id_customer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__services__techni__403A8C7D">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="services" Type="Self.services" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id_user" />
+            </Principal>
+            <Dependent Role="services">
+              <PropertyRef Name="technical_operator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="solutecEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="advances" EntityType="Self.advances" />
+          <EntitySet Name="brands" EntityType="Self.brands" />
+          <EntitySet Name="customers" EntityType="Self.customers" />
+          <EntitySet Name="services" EntityType="Self.services" />
+          <EntitySet Name="users" EntityType="Self.users" />
+          <AssociationSet Name="FK__advances__id_ser__4316F928" Association="Self.FK__advances__id_ser__4316F928">
+            <End Role="services" EntitySet="services" />
+            <End Role="advances" EntitySet="advances" />
+          </AssociationSet>
+          <AssociationSet Name="FK__services__id_cus__3F466844" Association="Self.FK__services__id_cus__3F466844">
+            <End Role="customers" EntitySet="customers" />
+            <End Role="services" EntitySet="services" />
+          </AssociationSet>
+          <AssociationSet Name="FK__services__techni__403A8C7D" Association="Self.FK__services__techni__403A8C7D">
+            <End Role="users" EntitySet="users" />
+            <End Role="services" EntitySet="services" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="solutecModelStoreContainer" CdmEntityContainer="solutecEntities">
+          <EntitySetMapping Name="advances">
+            <EntityTypeMapping TypeName="solutecModel.advances">
+              <MappingFragment StoreEntitySet="advances">
+                <ScalarProperty Name="id_advance" ColumnName="id_advance" />
+                <ScalarProperty Name="advance_type" ColumnName="advance_type" />
+                <ScalarProperty Name="advance_detail" ColumnName="advance_detail" />
+                <ScalarProperty Name="time" ColumnName="time" />
+                <ScalarProperty Name="id_service" ColumnName="id_service" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="brands">
+            <EntityTypeMapping TypeName="solutecModel.brands">
+              <MappingFragment StoreEntitySet="brands">
+                <ScalarProperty Name="id_brand" ColumnName="id_brand" />
+                <ScalarProperty Name="commercial_name" ColumnName="commercial_name" />
+                <ScalarProperty Name="nit" ColumnName="nit" />
+                <ScalarProperty Name="nrc" ColumnName="nrc" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customers">
+            <EntityTypeMapping TypeName="solutecModel.customers">
+              <MappingFragment StoreEntitySet="customers">
+                <ScalarProperty Name="id_customer" ColumnName="id_customer" />
+                <ScalarProperty Name="full_name" ColumnName="full_name" />
+                <ScalarProperty Name="nrc" ColumnName="nrc" />
+                <ScalarProperty Name="nit" ColumnName="nit" />
+                <ScalarProperty Name="dui" ColumnName="dui" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="customer_type" ColumnName="customer_type" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="services">
+            <EntityTypeMapping TypeName="solutecModel.services">
+              <MappingFragment StoreEntitySet="services">
+                <ScalarProperty Name="id_service" ColumnName="id_service" />
+                <ScalarProperty Name="id_customer" ColumnName="id_customer" />
+                <ScalarProperty Name="id_brand" ColumnName="id_brand" />
+                <ScalarProperty Name="unique_reference" ColumnName="unique_reference" />
+                <ScalarProperty Name="commercial_invoice" ColumnName="commercial_invoice" />
+                <ScalarProperty Name="purchase_date" ColumnName="purchase_date" />
+                <ScalarProperty Name="model" ColumnName="model" />
+                <ScalarProperty Name="is_warranty" ColumnName="is_warranty" />
+                <ScalarProperty Name="technical_operator" ColumnName="technical_operator" />
+                <ScalarProperty Name="in_date" ColumnName="in_date" />
+                <ScalarProperty Name="out_date" ColumnName="out_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="solutecModel.users">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+                <ScalarProperty Name="user" ColumnName="user" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="user_type" ColumnName="user_type" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
