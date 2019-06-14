@@ -6,7 +6,7 @@
     </Key>
     <Property Name="id_advance" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="advance_type" Type="smallint" Nullable="false" />
-    <Property Name="advance_detail" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="advance_detail" Type="varchar" MaxLength="200" Nullable="false" />
     <Property Name="time" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
     <Property Name="id_service" Type="int" Nullable="false" />
   </EntityType>
@@ -15,9 +15,9 @@
       <PropertyRef Name="id_brand" />
     </Key>
     <Property Name="id_brand" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="commercial_name" Type="varchar" MaxLength="1" Nullable="false" />
-    <Property Name="nit" Type="varchar" MaxLength="1" />
-    <Property Name="nrc" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="commercial_name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="nit" Type="varchar" MaxLength="200" />
+    <Property Name="nrc" Type="varchar" MaxLength="200" Nullable="false" />
     <Property Name="start_date" Type="date" />
     <Property Name="is_active" Type="bit" Nullable="false" />
   </EntityType>
@@ -26,13 +26,13 @@
       <PropertyRef Name="id_customer" />
     </Key>
     <Property Name="id_customer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="full_name" Type="varchar" MaxLength="1" Nullable="false" />
-    <Property Name="nrc" Type="varchar" MaxLength="1" />
-    <Property Name="nit" Type="varchar" MaxLength="1" />
-    <Property Name="dui" Type="varchar" MaxLength="1" />
-    <Property Name="address" Type="varchar" MaxLength="1" />
-    <Property Name="phone_number" Type="varchar" MaxLength="1" Nullable="false" />
-    <Property Name="email" Type="varchar" MaxLength="1" />
+    <Property Name="full_name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="nrc" Type="varchar" MaxLength="200" />
+    <Property Name="nit" Type="varchar" MaxLength="200" />
+    <Property Name="dui" Type="varchar" MaxLength="200" />
+    <Property Name="address" Type="varchar" MaxLength="200" />
+    <Property Name="phone_number" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="200" />
     <Property Name="customer_type" Type="smallint" Nullable="false" />
     <Property Name="is_active" Type="bit" Nullable="false" />
   </EntityType>
@@ -43,10 +43,10 @@
     <Property Name="id_service" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="id_customer" Type="int" Nullable="false" />
     <Property Name="id_brand" Type="int" />
-    <Property Name="unique_reference" Type="varchar" MaxLength="1" Nullable="false" />
-    <Property Name="commercial_invoice" Type="varchar" MaxLength="1" />
+    <Property Name="unique_reference" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="commercial_invoice" Type="varchar" MaxLength="200" />
     <Property Name="purchase_date" Type="date" />
-    <Property Name="model" Type="varchar" MaxLength="1" />
+    <Property Name="model" Type="varchar" MaxLength="200" />
     <Property Name="is_warranty" Type="bit" Nullable="false" />
     <Property Name="technical_operator" Type="int" Nullable="false" />
     <Property Name="in_date" Type="datetime" Nullable="false" />
@@ -57,12 +57,12 @@
       <PropertyRef Name="id_user" />
     </Key>
     <Property Name="id_user" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="user" Type="varchar" MaxLength="1" Nullable="false" />
-    <Property Name="password" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="user" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="200" Nullable="false" />
     <Property Name="user_type" Type="smallint" Nullable="false" />
     <Property Name="is_active" Type="bit" />
   </EntityType>
-  <Association Name="FK__advances__id_ser__4316F928">
+  <Association Name="FK__advances__id_ser__5165187F">
     <End Role="services" Type="Self.services" Multiplicity="1" />
     <End Role="advances" Type="Self.advances" Multiplicity="*" />
     <ReferentialConstraint>
@@ -74,7 +74,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__services__id_cus__3F466844">
+  <Association Name="FK__services__id_cus__4D94879B">
     <End Role="customers" Type="Self.customers" Multiplicity="1" />
     <End Role="services" Type="Self.services" Multiplicity="*" />
     <ReferentialConstraint>
@@ -86,7 +86,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__services__techni__403A8C7D">
+  <Association Name="FK__services__techni__4E88ABD4">
     <End Role="users" Type="Self.users" Multiplicity="1" />
     <End Role="services" Type="Self.services" Multiplicity="*" />
     <ReferentialConstraint>
@@ -104,15 +104,15 @@
     <EntitySet Name="customers" EntityType="Self.customers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="services" EntityType="Self.services" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__advances__id_ser__4316F928" Association="Self.FK__advances__id_ser__4316F928">
+    <AssociationSet Name="FK__advances__id_ser__5165187F" Association="Self.FK__advances__id_ser__5165187F">
       <End Role="services" EntitySet="services" />
       <End Role="advances" EntitySet="advances" />
     </AssociationSet>
-    <AssociationSet Name="FK__services__id_cus__3F466844" Association="Self.FK__services__id_cus__3F466844">
+    <AssociationSet Name="FK__services__id_cus__4D94879B" Association="Self.FK__services__id_cus__4D94879B">
       <End Role="customers" EntitySet="customers" />
       <End Role="services" EntitySet="services" />
     </AssociationSet>
-    <AssociationSet Name="FK__services__techni__403A8C7D" Association="Self.FK__services__techni__403A8C7D">
+    <AssociationSet Name="FK__services__techni__4E88ABD4" Association="Self.FK__services__techni__4E88ABD4">
       <End Role="users" EntitySet="users" />
       <End Role="services" EntitySet="services" />
     </AssociationSet>

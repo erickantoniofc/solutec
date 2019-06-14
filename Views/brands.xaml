@@ -1,0 +1,35 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:Solutec.Views"
+      xmlns:Models="clr-namespace:Solutec.Models" x:Class="Solutec.Views.brands"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="brands">
+
+
+    <Page.Resources>
+        <CollectionViewSource x:Key="brandsViewSource" d:DesignSource="{d:DesignInstance {x:Type Models:brands}, CreateList=True}"/>
+    </Page.Resources>
+    <DataGrid x:Name="brandsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource brandsViewSource}}" Margin="313,169,87,81" RowDetailsVisibilityMode="VisibleWhenSelected">
+        <DataGrid.Columns>
+            <DataGridTextColumn x:Name="commercial_nameColumn" Binding="{Binding commercial_name}" Header="commercial name" Width="SizeToHeader"/>
+            <DataGridTextColumn x:Name="id_brandColumn" Binding="{Binding id_brand}" Header="id brand" Width="SizeToHeader"/>
+            <DataGridCheckBoxColumn x:Name="is_activeColumn" Binding="{Binding is_active}" Header="is active" Width="SizeToHeader"/>
+            <DataGridTextColumn x:Name="nitColumn" Binding="{Binding nit}" Header="nit" Width="SizeToHeader"/>
+            <DataGridTextColumn x:Name="nrcColumn" Binding="{Binding nrc}" Header="nrc" Width="SizeToHeader"/>
+            <DataGridTemplateColumn x:Name="start_dateColumn" Header="start date" Width="SizeToHeader">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <DatePicker SelectedDate="{Binding start_date, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+        </DataGrid.Columns>
+    </DataGrid>
+
+
+</Page>

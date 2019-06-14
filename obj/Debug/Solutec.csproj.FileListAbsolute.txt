@@ -1,4 +1,3 @@
-C:\Users\Erick Flores\Desktop\Solutec\Solutec\obj\Debug\Solutec.csprojAssemblyReference.cache
 C:\Users\Erick Flores\Desktop\Solutec\Solutec\obj\Debug\MainWindow.g.cs
 C:\Users\Erick Flores\Desktop\Solutec\Solutec\obj\Debug\App.g.cs
 C:\Users\Erick Flores\Desktop\Solutec\Solutec\obj\Debug\Solutec_Content.g.cs
@@ -19,3 +18,13 @@ C:\Users\Erick Flores\Desktop\Solutec\Solutec\obj\Debug\Solutec.csproj.CoreCompi
 C:\Users\Erick Flores\Desktop\Solutec\Solutec\obj\Debug\Solutec.csproj.CopyComplete
 C:\Users\Erick Flores\Desktop\Solutec\Solutec\obj\Debug\Solutec.exe
 C:\Users\Erick Flores\Desktop\Solutec\Solutec\obj\Debug\Solutec.pdb
+C:\Users\Erick Flores\Desktop\Solutec\Solutec\bin\Debug\MaterialDesignColors.dll
+C:\Users\Erick Flores\Desktop\Solutec\Solutec\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\Erick Flores\Desktop\Solutec\Solutec\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\Erick Flores\Desktop\Solutec\Solutec\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\Erick Flores\Desktop\Solutec\Solutec\obj\Debug\Views\Page1.g.cs
+C:\Users\Erick Flores\Desktop\Solutec\Solutec\obj\Debug\App.baml
+C:\Users\Erick Flores\Desktop\Solutec\Solutec\obj\Debug\Views\Page1.baml
+C:\Users\Erick Flores\Desktop\Solutec\Solutec\obj\Debug\Views\brands.g.cs
+C:\Users\Erick Flores\Desktop\Solutec\Solutec\obj\Debug\Views\brands.baml
+C:\Users\Erick Flores\Desktop\Solutec\Solutec\obj\Debug\Solutec.csprojAssemblyReference.cache

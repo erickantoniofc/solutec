@@ -27,15 +27,28 @@ namespace Solutec
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
-            System.Windows.Data.CollectionViewSource usersViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("usersViewSource")));
-            // Cargar datos estableciendo la propiedad CollectionViewSource.Source:
-            // usersViewSource.Source = [origen de datos genérico]
+            
+          
         }
 
         private void UserTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
+
+        private void ButtonClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ButtonMinimize_Click(object sender, RoutedEventArgs e) {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void Rectangle_MouseLeftButtonDown(object sender, RoutedEventArgs e)
+        {
+            this.DragMove();
+        }
+
     }
 }

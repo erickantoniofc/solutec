@@ -6,7 +6,7 @@
     </Key>
     <Property Name="id_advance" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="advance_type" Type="Int16" Nullable="false" />
-    <Property Name="advance_detail" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="advance_detail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="time" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
     <Property Name="id_service" Type="Int32" Nullable="false" />
     <NavigationProperty Name="services" Relationship="Self.FK__advances__id_ser__4316F928" FromRole="advances" ToRole="services" />
@@ -16,9 +16,9 @@
       <PropertyRef Name="id_brand" />
     </Key>
     <Property Name="id_brand" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="commercial_name" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="nit" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-    <Property Name="nrc" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="commercial_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nit" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="nrc" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="start_date" Type="DateTime" Precision="0" />
     <Property Name="is_active" Type="Boolean" Nullable="false" />
   </EntityType>
@@ -27,13 +27,13 @@
       <PropertyRef Name="id_customer" />
     </Key>
     <Property Name="id_customer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="full_name" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="nrc" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-    <Property Name="nit" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-    <Property Name="dui" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-    <Property Name="address" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-    <Property Name="phone_number" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="email" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="full_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nrc" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="nit" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="dui" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="phone_number" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="customer_type" Type="Int16" Nullable="false" />
     <Property Name="is_active" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="services" Relationship="Self.FK__services__id_cus__3F466844" FromRole="customers" ToRole="services" />
@@ -45,10 +45,10 @@
     <Property Name="id_service" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="id_customer" Type="Int32" Nullable="false" />
     <Property Name="id_brand" Type="Int32" />
-    <Property Name="unique_reference" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="commercial_invoice" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="unique_reference" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="commercial_invoice" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="purchase_date" Type="DateTime" Precision="0" />
-    <Property Name="model" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="model" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="is_warranty" Type="Boolean" Nullable="false" />
     <Property Name="technical_operator" Type="Int32" Nullable="false" />
     <Property Name="in_date" Type="DateTime" Nullable="false" Precision="3" />
@@ -62,8 +62,8 @@
       <PropertyRef Name="id_user" />
     </Key>
     <Property Name="id_user" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="user" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="password" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="user" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="user_type" Type="Int16" Nullable="false" />
     <Property Name="is_active" Type="Boolean" />
     <NavigationProperty Name="services" Relationship="Self.FK__services__techni__403A8C7D" FromRole="users" ToRole="services" />

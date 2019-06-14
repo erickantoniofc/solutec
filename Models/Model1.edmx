@@ -4,14 +4,14 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="solutecModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="solutecModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="advances">
           <Key>
             <PropertyRef Name="id_advance" />
           </Key>
           <Property Name="id_advance" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="advance_type" Type="smallint" Nullable="false" />
-          <Property Name="advance_detail" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="advance_detail" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="time" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
           <Property Name="id_service" Type="int" Nullable="false" />
         </EntityType>
@@ -20,9 +20,9 @@
             <PropertyRef Name="id_brand" />
           </Key>
           <Property Name="id_brand" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="commercial_name" Type="varchar" MaxLength="1" Nullable="false" />
-          <Property Name="nit" Type="varchar" MaxLength="1" />
-          <Property Name="nrc" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="commercial_name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="nit" Type="varchar" MaxLength="200" />
+          <Property Name="nrc" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="start_date" Type="date" />
           <Property Name="is_active" Type="bit" Nullable="false" />
         </EntityType>
@@ -31,13 +31,13 @@
             <PropertyRef Name="id_customer" />
           </Key>
           <Property Name="id_customer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="full_name" Type="varchar" MaxLength="1" Nullable="false" />
-          <Property Name="nrc" Type="varchar" MaxLength="1" />
-          <Property Name="nit" Type="varchar" MaxLength="1" />
-          <Property Name="dui" Type="varchar" MaxLength="1" />
-          <Property Name="address" Type="varchar" MaxLength="1" />
-          <Property Name="phone_number" Type="varchar" MaxLength="1" Nullable="false" />
-          <Property Name="email" Type="varchar" MaxLength="1" />
+          <Property Name="full_name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="nrc" Type="varchar" MaxLength="200" />
+          <Property Name="nit" Type="varchar" MaxLength="200" />
+          <Property Name="dui" Type="varchar" MaxLength="200" />
+          <Property Name="address" Type="varchar" MaxLength="200" />
+          <Property Name="phone_number" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="200" />
           <Property Name="customer_type" Type="smallint" Nullable="false" />
           <Property Name="is_active" Type="bit" Nullable="false" />
         </EntityType>
@@ -48,10 +48,10 @@
           <Property Name="id_service" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_customer" Type="int" Nullable="false" />
           <Property Name="id_brand" Type="int" />
-          <Property Name="unique_reference" Type="varchar" MaxLength="1" Nullable="false" />
-          <Property Name="commercial_invoice" Type="varchar" MaxLength="1" />
+          <Property Name="unique_reference" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="commercial_invoice" Type="varchar" MaxLength="200" />
           <Property Name="purchase_date" Type="date" />
-          <Property Name="model" Type="varchar" MaxLength="1" />
+          <Property Name="model" Type="varchar" MaxLength="200" />
           <Property Name="is_warranty" Type="bit" Nullable="false" />
           <Property Name="technical_operator" Type="int" Nullable="false" />
           <Property Name="in_date" Type="datetime" Nullable="false" />
@@ -62,12 +62,12 @@
             <PropertyRef Name="id_user" />
           </Key>
           <Property Name="id_user" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="user" Type="varchar" MaxLength="1" Nullable="false" />
-          <Property Name="password" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="user" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="user_type" Type="smallint" Nullable="false" />
           <Property Name="is_active" Type="bit" />
         </EntityType>
-        <Association Name="FK__advances__id_ser__4316F928">
+        <Association Name="FK__advances__id_ser__5165187F">
           <End Role="services" Type="Self.services" Multiplicity="1" />
           <End Role="advances" Type="Self.advances" Multiplicity="*" />
           <ReferentialConstraint>
@@ -79,7 +79,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__services__id_cus__3F466844">
+        <Association Name="FK__services__id_cus__4D94879B">
           <End Role="customers" Type="Self.customers" Multiplicity="1" />
           <End Role="services" Type="Self.services" Multiplicity="*" />
           <ReferentialConstraint>
@@ -91,7 +91,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__services__techni__403A8C7D">
+        <Association Name="FK__services__techni__4E88ABD4">
           <End Role="users" Type="Self.users" Multiplicity="1" />
           <End Role="services" Type="Self.services" Multiplicity="*" />
           <ReferentialConstraint>
@@ -109,21 +109,20 @@
           <EntitySet Name="customers" EntityType="Self.customers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="services" EntityType="Self.services" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__advances__id_ser__4316F928" Association="Self.FK__advances__id_ser__4316F928">
+          <AssociationSet Name="FK__advances__id_ser__5165187F" Association="Self.FK__advances__id_ser__5165187F">
             <End Role="services" EntitySet="services" />
             <End Role="advances" EntitySet="advances" />
           </AssociationSet>
-          <AssociationSet Name="FK__services__id_cus__3F466844" Association="Self.FK__services__id_cus__3F466844">
+          <AssociationSet Name="FK__services__id_cus__4D94879B" Association="Self.FK__services__id_cus__4D94879B">
             <End Role="customers" EntitySet="customers" />
             <End Role="services" EntitySet="services" />
           </AssociationSet>
-          <AssociationSet Name="FK__services__techni__403A8C7D" Association="Self.FK__services__techni__403A8C7D">
+          <AssociationSet Name="FK__services__techni__4E88ABD4" Association="Self.FK__services__techni__4E88ABD4">
             <End Role="users" EntitySet="users" />
             <End Role="services" EntitySet="services" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="solutecModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -133,7 +132,7 @@
           </Key>
           <Property Name="id_advance" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="advance_type" Type="Int16" Nullable="false" />
-          <Property Name="advance_detail" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="advance_detail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="time" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="id_service" Type="Int32" Nullable="false" />
           <NavigationProperty Name="services" Relationship="Self.FK__advances__id_ser__4316F928" FromRole="advances" ToRole="services" />
@@ -143,9 +142,9 @@
             <PropertyRef Name="id_brand" />
           </Key>
           <Property Name="id_brand" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="commercial_name" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="nit" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="nrc" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="commercial_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nit" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="nrc" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="start_date" Type="DateTime" Precision="0" />
           <Property Name="is_active" Type="Boolean" Nullable="false" />
         </EntityType>
@@ -154,13 +153,13 @@
             <PropertyRef Name="id_customer" />
           </Key>
           <Property Name="id_customer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="full_name" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="nrc" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="nit" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="dui" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="address" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="phone_number" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="email" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="full_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nrc" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="nit" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="dui" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="phone_number" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="customer_type" Type="Int16" Nullable="false" />
           <Property Name="is_active" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="services" Relationship="Self.FK__services__id_cus__3F466844" FromRole="customers" ToRole="services" />
@@ -172,10 +171,10 @@
           <Property Name="id_service" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_customer" Type="Int32" Nullable="false" />
           <Property Name="id_brand" Type="Int32" />
-          <Property Name="unique_reference" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="commercial_invoice" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="unique_reference" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="commercial_invoice" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="purchase_date" Type="DateTime" Precision="0" />
-          <Property Name="model" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="model" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="is_warranty" Type="Boolean" Nullable="false" />
           <Property Name="technical_operator" Type="Int32" Nullable="false" />
           <Property Name="in_date" Type="DateTime" Nullable="false" Precision="3" />
@@ -189,8 +188,8 @@
             <PropertyRef Name="id_user" />
           </Key>
           <Property Name="id_user" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="user" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="password" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="user" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="user_type" Type="Int16" Nullable="false" />
           <Property Name="is_active" Type="Boolean" />
           <NavigationProperty Name="services" Relationship="Self.FK__services__techni__403A8C7D" FromRole="users" ToRole="services" />
