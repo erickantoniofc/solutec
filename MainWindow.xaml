@@ -21,13 +21,17 @@
 
     <Window.Resources>
         <Style x:Key="menu_button" TargetType="Grid" >
-            <Setter Property="Background" Value="Transparent" ></Setter>
+            <Setter Property="Background" Value="Transparent"></Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="true">
                     <Setter Property="Background" Value="#FF3BB7BD"></Setter>
                 </Trigger>
+
             </Style.Triggers>
+
         </Style>
+
+
     </Window.Resources>
 
 
@@ -43,7 +47,6 @@
             <ColumnDefinition Width="Auto" MinWidth="1098"/>
         </Grid.ColumnDefinitions>
 
-       
         <!--Header-->
         <Grid HorizontalAlignment="Left" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown" Height="95" VerticalAlignment="Top" Width="1088" Background="#FF3BB7BD" Grid.Column="1" Margin="0,10,0,0">
             <Grid.Effect>
@@ -57,21 +60,22 @@
             <Grid.Effect>
                 <DropShadowEffect BlurRadius="10" Opacity="0.25" ShadowDepth="2" Direction="325"/>
             </Grid.Effect>
+            <TextBlock x:Name="home_txt" HorizontalAlignment="Left" Margin="30,0,0,0" TextWrapping="Wrap" Text="Home" VerticalAlignment="Top" FontFamily="Inter" FontSize="42" FontWeight="ExtraBlack" Height="71"/>
 
         </Grid>
 
-    
-        
-        
+
+
+
         <!--Primary frame content-->
-        <Frame Content="" Grid.Column="1" HorizontalAlignment="Left" Height="576" Grid.Row="2" VerticalAlignment="Top" Width="774" Background="#FFF1FCFF">
+        <Frame x:Name="primary_frame" Content="" Grid.Column="1" HorizontalAlignment="Left" Height="576" Grid.Row="2" VerticalAlignment="Top" Width="774" Background="#FFF1FCFF" NavigationUIVisibility="Hidden" Source="/Solutec;component/Views/home.xaml">
             <Frame.Effect>
                 <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.25"/>
             </Frame.Effect>
         </Frame>
 
         <!--Secundary frame content-->
-        <Frame Content="" Grid.Column="1" HorizontalAlignment="Left" Height="576" Margin="774,0,0,0" Grid.Row="2" VerticalAlignment="Top" Width="314" Background="#FFC6D7DC"/>
+        <Frame x:Name="secondary_frame" Content="" Grid.Column="1" HorizontalAlignment="Left" Height="576" Margin="774,0,0,0" Grid.Row="2" VerticalAlignment="Top" Width="314" NavigationUIVisibility="Hidden" Background="#FFC6D7DC"/>
 
 
         <!--Principal menu draw-->
@@ -84,44 +88,50 @@
             <Button Content="" HorizontalAlignment="Left" Margin="32,672,0,0" VerticalAlignment="Top" Width="30" FontSize="24" FontWeight="Bold" Height="30" Padding="0,1,0,0" Background="#FF3BB7BD" BorderBrush="{x:Null}" Click="ButtonMinimize_Click"/>
 
         </Grid>
+
+
         <!--Home button-->
-        <Grid Style="{StaticResource menu_button}" HorizontalAlignment="Left" Height="95" Margin="10,10,0,0" VerticalAlignment="Top" Width="92" Background="#FF3BB7BD">
-           
+
+        <Grid x:Name="home_btn" Style="{StaticResource menu_button}" MouseDown="Services_btn_MouseDown" HorizontalAlignment="Left" Height="95" Margin="10,10,0,0" VerticalAlignment="Top" Width="92" Background="#FF3BB7BD">
+
             <Image Margin="15,10,17,25" Source="Resources/home-page.png" Stretch="Fill"/>
             <TextBlock HorizontalAlignment="Left" Margin="22,64,0,-4" TextWrapping="Wrap" Text="Home" FontFamily="Inter"/>
 
         </Grid>
 
+
         <!--Services button-->
-        <Grid Style="{StaticResource menu_button}" x:Name="mouse"  HorizontalAlignment="Left" Height="95" Margin="10,0,0,0" VerticalAlignment="Top" Width="92" Grid.RowSpan="2" Grid.Row="1">
+        <Grid Style="{StaticResource menu_button}" x:Name="services_btn"  HorizontalAlignment="Left" Height="95" Margin="10,0,0,0" VerticalAlignment="Top" Width="92" Grid.RowSpan="2" Grid.Row="1" MouseDown="Services_btn_MouseDown">
             <Image Margin="15,10,17,25" Source="Resources/003-customer.png" Stretch="Fill" />
             <TextBlock HorizontalAlignment="Left" Margin="13,67,0,-7" TextWrapping="Wrap" Text="Servicios" VerticalAlignment="Top" FontFamily="Inter"/>
         </Grid>
 
         <!--Customers button-->
-        <Grid Style="{StaticResource menu_button}" HorizontalAlignment="Left" Height="95" Margin="10,24,0,0" VerticalAlignment="Top" Width="92" Grid.Row="2">
+        <Grid MouseDown="Services_btn_MouseDown" x:Name="customers_btn" Style="{StaticResource menu_button}" HorizontalAlignment="Left" Height="95" Margin="10,24,0,0" VerticalAlignment="Top" Width="92" Grid.Row="2">
             <Image Margin="15,10,17,25" Source="Resources/002-businessman.png" Stretch="Fill"/>
             <TextBlock HorizontalAlignment="Left" Margin="14,67,0,-7" TextWrapping="Wrap" VerticalAlignment="Top" Text="Clientes" FontFamily="Inter"/>
         </Grid>
-        
+
         <!--Brands button-->
-        <Grid Style="{StaticResource menu_button}" HorizontalAlignment="Left" Height="95" Margin="10,119,0,0" VerticalAlignment="Top" Width="92" Grid.Row="2">
+        <Grid MouseDown="Services_btn_MouseDown" x:Name="brands_btn" Style="{StaticResource menu_button}" HorizontalAlignment="Left" Height="95" Margin="10,119,0,0" VerticalAlignment="Top" Width="92" Grid.Row="2">
             <Image Margin="15,10,17,25" Source="Resources/001-closed-caption-logo.png" Stretch="Fill"/>
             <TextBlock HorizontalAlignment="Left" Margin="17,65,0,-5" TextWrapping="Wrap" Text="Marcas" VerticalAlignment="Top" FontFamily="Inter"/>
         </Grid>
 
         <!--Users button-->
-        <Grid HorizontalAlignment="Left" Style="{StaticResource menu_button}" Height="95" Margin="10,214,0,0" VerticalAlignment="Top" Width="92" Grid.Row="2">
+        <Grid MouseDown="Services_btn_MouseDown" x:Name="users_btn" HorizontalAlignment="Left" Style="{StaticResource menu_button}" Height="95" Margin="10,214,0,0" VerticalAlignment="Top" Width="92" Grid.Row="2">
             <Image Margin="15,10,17,25" Source="Resources/004-man-user.png" Stretch="Fill"/>
             <TextBlock HorizontalAlignment="Left" Margin="13,65,0,-5" TextWrapping="Wrap" Text="Usuarios" VerticalAlignment="Top" FontFamily="Inter"/>
         </Grid>
-        
+
         <!--Footer-->
         <Grid Grid.Column="1" HorizontalAlignment="Left" Height="38" Margin="0,576,0,0" Grid.Row="2" VerticalAlignment="Top" Width="1088" Background="#FF2E2E2E">
             <TextBlock HorizontalAlignment="Left" Margin="712,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" Foreground="#DDFFFFFF" Width="343"><Run Text="Solutec -"/><Run Text=" Sistema de reparaciones y garantias"/></TextBlock>
             <TextBlock HorizontalAlignment="Left" Margin="22,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" Foreground="#FFEA4444" Width="343" Text="9 Trabajos pendientes"/>
         </Grid>
-       
+        <Button Click="BtnAction_Click" x:Name="btnAction" Visibility="Hidden" Content="Registrar marca" Grid.Column="1" HorizontalAlignment="Left" Margin="862,46,0,0" Grid.Row="1" VerticalAlignment="Top" Width="154" Grid.RowSpan="2" Height="49" Background="#FF3BB7BD" FontFamily="Inter" FontSize="16"/>
+
+
 
     </Grid>
 </Window>

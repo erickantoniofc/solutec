@@ -82,8 +82,11 @@
     <Compile Include="Views\brands.xaml.cs">
       <DependentUpon>brands.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Page1.xaml.cs">
-      <DependentUpon>Page1.xaml</DependentUpon>
+    <Compile Include="Views\home.xaml.cs">
+      <DependentUpon>home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\new_brand.xaml.cs">
+      <DependentUpon>new_brand.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -101,7 +104,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Page1.xaml">
+    <Page Include="Views\home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\new_brand.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -166,6 +173,7 @@
     <None Include="Properties\DataSources\Solutec.Models.brands.datasource" />
     <None Include="Properties\DataSources\Solutec.Models.customers.datasource" />
     <None Include="Properties\DataSources\Solutec.Models.services.datasource" />
+    <None Include="Properties\DataSources\Solutec.Models.solutecEntities.datasource" />
     <None Include="Properties\DataSources\Solutec.Models.users.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -180,6 +188,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\success.png" />
     <Resource Include="Resources\home-page.png" />
     <Resource Include="Resources\002-businessman.png" />
     <Resource Include="Resources\003-customer.png" />

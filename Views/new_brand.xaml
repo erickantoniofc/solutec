@@ -1,0 +1,69 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Solutec.Views"
+      xmlns:Models="clr-namespace:Solutec.Models" x:Class="Solutec.Views.new_brand"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Page1" Width="314" Height="574">
+
+    <Page.Resources>
+        <CollectionViewSource x:Key="brandsViewSource" d:DesignSource="{d:DesignInstance {x:Type Models:brands}, CreateList=True}"/>
+        <RoutedUICommand x:Key="saveCommand" Text="Guardar"/>
+        <RoutedUICommand x:Key="modifyCommand" Text="Modificar"/>
+        <RoutedUICommand x:Key="deleteCommand" Text="Eliminar"/>
+    </Page.Resources>
+
+    <Page.CommandBindings>
+        <CommandBinding Command="{StaticResource saveCommand}" Executed="SaveCommandHandler"/>
+        <CommandBinding Command="{StaticResource modifyCommand}" Executed="ModifyCommand_Handler"/>
+        <CommandBinding Command="{StaticResource deleteCommand}" Executed="DeleteCommand_Handler"/>
+    </Page.CommandBindings>
+
+
+
+    <Grid>
+
+
+        <Grid x:Name="grid1" VerticalAlignment="Top" Margin="23,114,0,0" HorizontalAlignment="Left" DataContext="{StaticResource brandsViewSource}" Width="274">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Nombre comercial: " FontFamily="Inter" FontSize="14"/>
+            <TextBox x:Name="commercial_nameTextBox" Width="120" VerticalAlignment="Center" Text="{Binding commercial_name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3,3,0,10" Height="34" HorizontalAlignment="Left" Grid.Column="1" FontFamily="Inter" FontSize="14"/>
+
+            <Label Content="nit:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center" FontFamily="Inter" FontSize="14"/>
+            <TextBox x:Name="nitTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="34" Margin="3" Grid.Row="1" Text="{Binding nit, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" FontFamily="Inter" FontSize="14"/>
+
+            <Label Content="nrc:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center" FontFamily="Inter" FontSize="14"/>
+            <TextBox x:Name="nrcTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="34" Margin="3" Grid.Row="2" Text="{Binding nrc, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" FontFamily="Inter" FontSize="14"/>
+
+            <Label Content="start date:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center" FontFamily="Inter" FontSize="14"/>
+            <DatePicker x:Name="start_dateDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="3" SelectedDate="{Binding start_date, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" FontFamily="Inter" FontSize="14"/>
+        </Grid>
+
+        <StackPanel HorizontalAlignment="Left" Height="135" Margin="49,369,0,0" VerticalAlignment="Top" Width="232" DataContext="{StaticResource brandsViewSource}">
+            <Button x:Name="btnSave" Content="Guardar marca" Command="{StaticResource saveCommand}" FontFamily="Inter" FontWeight="SemiBold"/>
+            <Button x:Name="btnModify" Content="Modificar marca" Command="{StaticResource modifyCommand}" Margin="0,21,0,0" Background="#FF1FA4D6" Click="Button_Click" FontFamily="Inter" FontWeight="SemiBold" IsCancel="True" BorderBrush="{x:Null}"/>
+            <Button x:Name="btnDelete" Content="Eliminar Marca" Margin="0,20,0,0" Command="{StaticResource deleteCommand}" Background="#FFE05C62" Click="Button_Click" FontFamily="Inter" FontWeight="SemiBold" IsCancel="True" BorderBrush="{x:Null}"/>
+
+        </StackPanel>
+        <Label x:Name="newBrand" Content="Nueva marca" HorizontalAlignment="Left" Margin="92,35,0,0" VerticalAlignment="Top" FontFamily="Inter" FontSize="20" FontWeight="ExtraBlack"/>
+        <Grid x:Name="notification" HorizontalAlignment="Left" Height="70" VerticalAlignment="Top" Width="314" Opacity="1.0" Margin="0,494,0,0">
+
+            <Label x:Name="lblNotification" Content="¡Marca registrada exitosamente!" HorizontalAlignment="Left" Margin="56,11,0,0" VerticalAlignment="Top" Height="50" Width="237" FontFamily="Inter" FontSize="14" Foreground="#DD000000" FontWeight="Black" Background="{x:Null}"/>
+            <Image HorizontalAlignment="Left" Height="25" Margin="26,19,0,0" VerticalAlignment="Top" Width="30" Source="/Solutec;component/Resources/success.png"/>
+        </Grid>
+
+    </Grid>
+
+</Page>

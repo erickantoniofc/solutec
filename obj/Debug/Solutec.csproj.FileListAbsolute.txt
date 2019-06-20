@@ -22,9 +22,10 @@ C:\Users\Erick Flores\Desktop\Solutec\Solutec\bin\Debug\MaterialDesignColors.dll
 C:\Users\Erick Flores\Desktop\Solutec\Solutec\bin\Debug\MaterialDesignThemes.Wpf.dll
 C:\Users\Erick Flores\Desktop\Solutec\Solutec\bin\Debug\MaterialDesignThemes.Wpf.pdb
 C:\Users\Erick Flores\Desktop\Solutec\Solutec\bin\Debug\MaterialDesignThemes.Wpf.xml
-C:\Users\Erick Flores\Desktop\Solutec\Solutec\obj\Debug\Views\Page1.g.cs
 C:\Users\Erick Flores\Desktop\Solutec\Solutec\obj\Debug\App.baml
-C:\Users\Erick Flores\Desktop\Solutec\Solutec\obj\Debug\Views\Page1.baml
 C:\Users\Erick Flores\Desktop\Solutec\Solutec\obj\Debug\Views\brands.g.cs
 C:\Users\Erick Flores\Desktop\Solutec\Solutec\obj\Debug\Views\brands.baml
-C:\Users\Erick Flores\Desktop\Solutec\Solutec\obj\Debug\Solutec.csprojAssemblyReference.cache
+C:\Users\Erick Flores\Desktop\Solutec\Solutec\obj\Debug\Views\new_brand.g.cs
+C:\Users\Erick Flores\Desktop\Solutec\Solutec\obj\Debug\Views\new_brand.baml
+C:\Users\Erick Flores\Desktop\Solutec\Solutec\obj\Debug\Views\home.g.cs
+C:\Users\Erick Flores\Desktop\Solutec\Solutec\obj\Debug\Views\home.baml
