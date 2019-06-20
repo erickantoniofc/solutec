@@ -42,10 +42,9 @@ namespace Solutec.Views
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-                       
+            
             var brand_search = from brand in context.brands where brand.commercial_name.Contains(txt_BrandSearch.Text) select brand;
-
-            brandsDataGrid.ItemsSource = brand_search;
+            brandsDataGrid.ItemsSource = brand_search.ToList();
         }
 
         private void BrandsDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
