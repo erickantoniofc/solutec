@@ -164,5 +164,42 @@ namespace Solutec.Views
             btnDelete.IsEnabled = false;
             btnModify.IsEnabled = false;
         }
+
+        private void NitTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key != Key.Back)
+            {
+                var nit = nitTextBox.Text;
+                if (nit.Count() == 4)
+                {
+                    nitTextBox.Text += "-";
+                    nitTextBox.SelectionStart = nitTextBox.Text.Length;
+                }
+                else if (nit.Count() == 11)
+                {
+                    nitTextBox.Text += "-";
+                    nitTextBox.SelectionStart = nitTextBox.Text.Length;
+                }
+                else if (nit.Count() == 15)
+                {
+                    nitTextBox.Text += "-";
+                    nitTextBox.SelectionStart = nitTextBox.Text.Length;
+                }
+            }
+        }
+
+        private void NrcTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key != Key.Back)
+            {
+                var nrc = nrcTextBox.Text;
+
+                if (nrc.Count() == 5)
+                {
+                    nrcTextBox.Text += "-";
+                    nrcTextBox.SelectionStart = nrcTextBox.Text.Length;
+                }
+            }
+        }
     }
 }

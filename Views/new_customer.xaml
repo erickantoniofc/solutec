@@ -56,7 +56,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label Content="DUI:" FontFamily="Inter" Grid.Column="0" HorizontalAlignment="Left" Margin="2,4,0,2" Grid.Row="0" VerticalAlignment="Center"/>
-            <TextBox materialDesign:HintAssist.Hint="DUI" x:Name="duiTextBox" FontFamily="Inter" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="64,4,-56,8" Grid.Row="0" Text="{Binding dui, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <TextBox MaxLength="10" materialDesign:HintAssist.Hint="DUI" x:Name="duiTextBox" FontFamily="Inter" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="64,4,-56,8" Grid.Row="0" Text="{Binding dui, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" TextChanged="DuiTextBox_TextChanged" KeyDown="DuiTextBox_KeyDown"/>
         </Grid>
         <Grid x:Name="grid4" DataContext="{StaticResource customersViewSource}" HorizontalAlignment="Left" Margin="49,260,0,0" VerticalAlignment="Top" Width="221">
             <Grid.ColumnDefinitions>
@@ -67,7 +67,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label Content="NIT:" FontFamily="Inter" Grid.Column="0" HorizontalAlignment="Left" Margin="0,5,0,1" Grid.Row="0" VerticalAlignment="Center"/>
-            <TextBox materialDesign:HintAssist.Hint="NIT" x:Name="nitTextBox" Grid.Column="1" FontFamily="Inter" HorizontalAlignment="Left" Height="30" Margin="67,5,-58,7" Grid.Row="0" Text="{Binding nit, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <TextBox KeyDown="NitTextBox_KeyDown" MaxLength="17" materialDesign:HintAssist.Hint="NIT" x:Name="nitTextBox" Grid.Column="1" FontFamily="Inter" HorizontalAlignment="Left" Height="30" Margin="67,5,-58,7" Grid.Row="0" Text="{Binding nit, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" TextChanged="NitTextBox_TextChanged"/>
         </Grid>
         <Grid x:Name="grid5" DataContext="{StaticResource customersViewSource}" HorizontalAlignment="Left" Margin="49,305,0,0" VerticalAlignment="Top" Width="221">
             <Grid.ColumnDefinitions>
@@ -78,7 +78,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label FontFamily="Inter" Content="NRC:" Grid.Column="0" HorizontalAlignment="Left" Margin="0,5,0,1" Grid.Row="0" VerticalAlignment="Center"/>
-            <TextBox FontFamily="Inter" materialDesign:HintAssist.Hint="NRC" x:Name="nrcTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="61,5,-53,7" Grid.Row="0" Text="{Binding nrc, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <TextBox MaxLength="7" KeyDown="NrcTextBox_KeyDown" FontFamily="Inter" materialDesign:HintAssist.Hint="NRC" x:Name="nrcTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="61,5,-53,7" Grid.Row="0" Text="{Binding nrc, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
         </Grid>
         <Grid x:Name="grid6" DataContext="{StaticResource customersViewSource}" HorizontalAlignment="Left" Margin="49,134,0,0" VerticalAlignment="Top" Width="228">
             <Grid.ColumnDefinitions>
