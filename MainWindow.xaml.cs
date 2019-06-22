@@ -144,7 +144,7 @@ namespace Solutec
                     home_txt.Text = "Clientes";
                     btnAction.Visibility = Visibility.Visible;
                     btnAction.Content = "Registrar cliente";
-                    Solutec.Views.customers customer = new Solutec.Views.customers();
+                    Solutec.Views.customers customer = new Solutec.Views.customers(this);
                     primary_frame.NavigationService.Navigate(customer);
                     secondary_frame.NavigationService.Navigate(blank);
                     break;
@@ -181,6 +181,10 @@ namespace Solutec
                     Solutec.Views.users user = new Solutec.Views.users(this);
                     primary_frame.NavigationService.Navigate(user);
                     break;
+                case "customer":
+                    Solutec.Views.customers customer = new Solutec.Views.customers(this);
+                    primary_frame.NavigationService.Navigate(customer);
+                    break;
             }
     }
 
@@ -196,6 +200,12 @@ namespace Solutec
             Solutec.Views.new_user newUser = new Solutec.Views.new_user(this, user);
             secondary_frame.NavigationService.Navigate(newUser);
         }
+
+        public void customerSelected(Solutec.Models.customers customer)
+        {
+            Solutec.Views.new_customer newCustomer = new Solutec.Views.new_customer(this, customer);
+            secondary_frame.NavigationService.Navigate(newCustomer);
+        }
         private void BtnAction_Click(object sender, RoutedEventArgs e)
         {
             Button btn = sender as Button;
@@ -208,6 +218,10 @@ namespace Solutec
                 case "Registrar usuario":
                     Solutec.Views.new_user newUser = new Solutec.Views.new_user(this);
                     secondary_frame.NavigationService.Navigate(newUser);
+                    break;
+                case "Registrar cliente":
+                    Solutec.Views.new_customer newCustomer = new Solutec.Views.new_customer(this);
+                    secondary_frame.NavigationService.Navigate(newCustomer);
                     break;
             }
         }

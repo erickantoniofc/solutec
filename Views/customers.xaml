@@ -3,12 +3,31 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:Models="clr-namespace:Solutec.Models"
       xmlns:local="clr-namespace:Solutec.Views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="customers">
+      Title="customers" Width="774" Height="576" Loaded="Page_Loaded">
 
-    <Grid>
-        
+    <Page.Resources>
+        <CollectionViewSource x:Key="solutecEntitiesViewSource" d:DesignSource="{d:DesignInstance {x:Type Models:solutecEntities}, CreateList=True}"/>
+        <CollectionViewSource x:Key="solutecEntitiescutomersViewSource" Source="{Binding customers, Source={StaticResource solutecEntitiesViewSource}}"/>
+    </Page.Resources>
+
+    <Grid x:Name="grid1" DataContext="{StaticResource solutecEntitiescutomersViewSource}">
+        <Label Content="Buscar:" HorizontalAlignment="Left" Margin="20,50,0,0" VerticalAlignment="Top" FontFamily="Inter" FontSize="16"/>
+        <TextBox x:Name="txt_CustomerSearch" HorizontalAlignment="Left" Height="39" Margin="91,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="663" SpellCheck.IsEnabled="True" FontFamily="Inter" FontSize="16" TextChanged="TextBox_TextChanged"/>
+        <DataGrid MouseDoubleClick="CustomersDataGrid_MouseDoubleClick" IsReadOnly="true" x:Name="customersDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="20,126,20,37" CanUserDeleteRows="False" CanUserAddRows="False" Background="{x:Null}" Focusable="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="full_nameColumn" Binding="{Binding full_name}" Header="Nombre completo" Width="200"/>
+                <DataGridTextColumn x:Name="nrcColumn" Binding="{Binding nrc}" Header="NRC" Width="50"/>
+                <DataGridTextColumn x:Name="nitColumn" Binding="{Binding nit}" Header="NIT" Width="50"/>
+                <DataGridTextColumn x:Name="duiColumn" Binding="{Binding dui}" Header="DUI" Width="50"/>
+                <DataGridTextColumn x:Name="addressColumn" Binding="{Binding address}" Header="Direccion" Width="120"/>
+                <DataGridTextColumn x:Name="phone_numberColumn" Binding="{Binding phone_number}" Header="Contacto" Width="50"/>
+                <DataGridTextColumn x:Name="emailColumn" Binding="{Binding email}" Header="E-mail" Width="100"/>
+                <DataGridTextColumn x:Name="customer_typeColumn" Binding="{Binding customer_type}" Header="Tipo" Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid> 
     </Grid>
 </Page>

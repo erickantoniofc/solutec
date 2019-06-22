@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +21,36 @@ namespace Solutec.Views
     /// </summary>
     public partial class customers : Page
     {
-        public customers()
+        private Solutec.MainWindow mainw;
+        Models.solutecEntities context = new Models.solutecEntities();
+        CollectionViewSource customersViewSource;
+        public customers(Solutec.MainWindow mainwin)
         {
             InitializeComponent();
+            customersViewSource = ((CollectionViewSource)(FindResource("solutecEntitiescutomersViewSource")));
+            DataContext = this;
+            mainw = mainwin;
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            context.customers.Load();
+            customersViewSource.Source = context.customers.Local;
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var customer_search = from customer in context.customers where customer.full_name.Contains(txt_CustomerSearch.Text) select customer;
+            customersDataGrid.ItemsSource = customer_search.ToList();
+        }
+
+        private void CustomersDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if(customersDataGrid.SelectedItem != null)
+            {
+                Solutec.Models.customers customer = (Solutec.Models.customers)customersDataGrid.SelectedItem;
+                mainw.customerSelected(customer);
+            }
         }
     }
 }

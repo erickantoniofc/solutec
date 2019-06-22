@@ -1,0 +1,111 @@
+﻿<Page x:Class="Solutec.Views.new_customer"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Solutec.Views"
+      xmlns:Models="clr-namespace:Solutec.Models"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="new_customer" Width="314" Height="574"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+    <Page.Resources>
+        <CollectionViewSource x:Key="customersViewSource" d:DesignSource="{d:DesignInstance {x:Type Models:customers}, CreateList=True}"/>
+        <RoutedUICommand x:Key="saveCommand" Text="Guardar"/>
+        <RoutedUICommand x:Key="modifyCommand" Text="Modificar"/>
+        <RoutedUICommand x:Key="deleteCommand" Text="Eliminar"/>
+    </Page.Resources>
+
+    <Page.CommandBindings>
+        <CommandBinding Command="{StaticResource saveCommand}" Executed="CommandBinding_Executed"/>
+        <CommandBinding Command="{StaticResource modifyCommand}" Executed="CommandBinding_Executed_1"/>
+        <CommandBinding Command="{StaticResource deleteCommand}" Executed="CommandBinding_Executed_2"/>
+    </Page.CommandBindings>
+
+    <Grid>
+        <Label x:Name="newCustomer" Content="Nuevo cliente" HorizontalAlignment="Left" Margin="92,29,0,0" VerticalAlignment="Top" FontFamily="Inter" FontSize="20" FontWeight="ExtraBlack"/>
+
+        <Grid x:Name="grid1" DataContext="{StaticResource customersViewSource}" HorizontalAlignment="Left" Margin="49,97,0,0" VerticalAlignment="Top" Width="228">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="Nombre:" FontFamily="Inter" FontSize="12" Grid.Column="0" HorizontalAlignment="Left" Margin="0,4,0,2" Grid.Row="0" VerticalAlignment="Center"/>
+            <TextBox materialDesign:HintAssist.Hint="Nombre" x:Name="full_nameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="42,4,-32,8" Grid.Row="0" Text="{Binding full_name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" FontFamily="Inter"/>
+        </Grid>
+        <Grid x:Name="grid2" DataContext="{StaticResource customersViewSource}" HorizontalAlignment="Left" Margin="49,176,0,0" VerticalAlignment="Top" Width="228">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label FontFamily="Inter" Content="Dirección:" Grid.Column="0" HorizontalAlignment="Left" Margin="0,3" Grid.Row="0" VerticalAlignment="Center"/>
+            <TextBox materialDesign:HintAssist.Hint="Direccion" FontFamily="Inter" x:Name="addressTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="35,4,-21,8" Grid.Row="0" Text="{Binding address, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+        </Grid>
+        <Grid x:Name="grid3" DataContext="{StaticResource customersViewSource}" HorizontalAlignment="Left" Margin="49,218,0,0" VerticalAlignment="Top" Width="221">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="DUI:" FontFamily="Inter" Grid.Column="0" HorizontalAlignment="Left" Margin="2,4,0,2" Grid.Row="0" VerticalAlignment="Center"/>
+            <TextBox materialDesign:HintAssist.Hint="DUI" x:Name="duiTextBox" FontFamily="Inter" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="64,4,-56,8" Grid.Row="0" Text="{Binding dui, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+        </Grid>
+        <Grid x:Name="grid4" DataContext="{StaticResource customersViewSource}" HorizontalAlignment="Left" Margin="49,260,0,0" VerticalAlignment="Top" Width="221">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="NIT:" FontFamily="Inter" Grid.Column="0" HorizontalAlignment="Left" Margin="0,5,0,1" Grid.Row="0" VerticalAlignment="Center"/>
+            <TextBox materialDesign:HintAssist.Hint="NIT" x:Name="nitTextBox" Grid.Column="1" FontFamily="Inter" HorizontalAlignment="Left" Height="30" Margin="67,5,-58,7" Grid.Row="0" Text="{Binding nit, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+        </Grid>
+        <Grid x:Name="grid5" DataContext="{StaticResource customersViewSource}" HorizontalAlignment="Left" Margin="49,305,0,0" VerticalAlignment="Top" Width="221">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label FontFamily="Inter" Content="NRC:" Grid.Column="0" HorizontalAlignment="Left" Margin="0,5,0,1" Grid.Row="0" VerticalAlignment="Center"/>
+            <TextBox FontFamily="Inter" materialDesign:HintAssist.Hint="NRC" x:Name="nrcTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="61,5,-53,7" Grid.Row="0" Text="{Binding nrc, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+        </Grid>
+        <Grid x:Name="grid6" DataContext="{StaticResource customersViewSource}" HorizontalAlignment="Left" Margin="49,134,0,0" VerticalAlignment="Top" Width="228">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="Contacto:" Grid.Column="0" FontFamily="Inter" HorizontalAlignment="Left" Margin="0,3" Grid.Row="0" VerticalAlignment="Center"/>
+            <TextBox materialDesign:HintAssist.Hint="Telefono" x:Name="phone_numberTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="30" FontFamily="Inter" Margin="35,4,-37,8" Grid.Row="0" Text="{Binding phone_number, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+        </Grid>
+
+        <StackPanel HorizontalAlignment="Left" Height="135" Margin="49,369,0,0" VerticalAlignment="Top" Width="232" DataContext="{StaticResource customersViewSource}">
+            <Button x:Name="btnSave" Content="Guardar cliente" Command="{StaticResource saveCommand}" FontFamily="Inter" FontWeight="SemiBold"/>
+            <Button x:Name="btnModify" Content="Modificar cliente" Command="{StaticResource modifyCommand}" Margin="0,21,0,0" Background="#FF1FA4D6"  FontFamily="Inter" FontWeight="SemiBold" IsCancel="True" BorderBrush="{x:Null}"/>
+            <Button x:Name="btnDelete" Content="Eliminar Cliente" Margin="0,20,0,0" Command="{StaticResource deleteCommand}" Background="#FFE05C62"  FontFamily="Inter" FontWeight="SemiBold" IsCancel="True" BorderBrush="{x:Null}"/>
+
+        </StackPanel>
+
+        <Grid x:Name="notification" HorizontalAlignment="Left" Height="70" VerticalAlignment="Top" Width="314" Opacity="1.0" Margin="0,494,0,0">
+
+            <Label x:Name="lblNotification" Content="¡Cliente registrado exitosamente!" HorizontalAlignment="Left" Margin="56,11,0,0" VerticalAlignment="Top" Height="50" Width="248" FontFamily="Inter" FontSize="14" Foreground="#DD000000" FontWeight="Black" Background="{x:Null}"/>
+            <Image HorizontalAlignment="Left" Height="25" Margin="26,19,0,0" VerticalAlignment="Top" Width="30" Source="/Solutec;component/Resources/success.png"/>
+        </Grid>
+        <RadioButton x:Name="direct_customer" Checked="RadioButton_Checked" GroupName="customer_type" Content="Directo" HorizontalAlignment="Left" Margin="49,79,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="thirdParty_customer" Checked="RadioButton_Checked" GroupName="customer_type" Content="Tercerizado" HorizontalAlignment="Left" Margin="188,79,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Page>
