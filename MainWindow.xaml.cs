@@ -24,6 +24,8 @@ namespace Solutec
         public MainWindow()
         {
             InitializeComponent();
+
+            Services_btn_MouseDown(home_btn,null);
            
         }
 
@@ -74,20 +76,31 @@ namespace Solutec
             //brands_btn.Style = Application.Current.Resources["menu_button"] as Style;
             //users_btn.Style = Application.Current.Resources["menu_button"] as Style;
 
-            home_btn.Background = Brushes.Transparent;
-            services_btn.Background = Brushes.Transparent;
-            customers_btn.Background = Brushes.Transparent;
-            brands_btn.Background = Brushes.Transparent;
-            users_btn.Background = Brushes.Transparent;
+            //home_btn.Background = Brushes.Transparent;
+            //services_btn.Background = Brushes.Transparent;
+            //customers_btn.Background = Brushes.Transparent;
+            //brands_btn.Background = Brushes.Transparent;
+            //users_btn.Background = Brushes.Transparent;
 
            
         }
-
+        public Grid CurrentButtonSelected { get; set; }
         private void Services_btn_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Solutec.Views.blank blank = new Solutec.Views.blank();
             Grid grid = sender as Grid;
-            setStyleToButtons();
+            //setStyleToButtons();
+
+            if (CurrentButtonSelected != grid)
+            {
+                if (CurrentButtonSelected != null)
+                {
+                    CurrentButtonSelected.Background = Brushes.White;
+                    
+                }
+                CurrentButtonSelected = grid;
+            }
+
             grid.Background = new SolidColorBrush(Color.FromArgb(99, 59, 183, 189));
             switch (grid.Name)
             {

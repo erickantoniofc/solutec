@@ -3,6 +3,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:Models="clr-namespace:Solutec.Models" x:Class="Solutec.Views.users"
+      xmlns:converters="clr-namespace:Solutec.Converters"
       xmlns:local="clr-namespace:Solutec.Views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
@@ -14,8 +15,9 @@
         <CollectionViewSource x:Key="solutecEntitiesViewSource" d:DesignSource="{d:DesignInstance {x:Type Models:solutecEntities}, CreateList=True}"/>
         <CollectionViewSource x:Key="solutecEntitiesusersViewSource" Source="{Binding users, Source={StaticResource solutecEntitiesViewSource}}"/>
 
-    </Page.Resources>
 
+        <converters:UserTypeConverter  x:Key="UserTypeConverter" />
+    </Page.Resources>
     <Grid Width="774" Height="576" x:Name="grid1"  DataContext="{StaticResource solutecEntitiesusersViewSource}">
 
         <Label Content="Buscar:" HorizontalAlignment="Left" Margin="20,50,0,0" VerticalAlignment="Top" FontFamily="Inter" FontSize="16"/>
@@ -24,7 +26,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="id_userColumn" Binding="{Binding id_user}" Header="" Visibility="Hidden"/>
                 <DataGridTextColumn x:Name="userColumn" Binding="{Binding user}" Header="Usuario" Width="500"/>
-                <DataGridTextColumn x:Name="user_typeColumn" Binding="{Binding user_type}" Header="Nivel" Width="234"/>
+                <DataGridTextColumn x:Name="user_typeColumn" Binding="{Binding user_type, Converter={StaticResource UserTypeConverter}}" Header="Nivel" Width="234"/>
                 
             </DataGrid.Columns>
         </DataGrid>

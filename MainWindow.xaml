@@ -92,7 +92,7 @@
 
         <!--Home button-->
 
-        <Grid x:Name="home_btn" Style="{StaticResource menu_button}" MouseDown="Services_btn_MouseDown" HorizontalAlignment="Left" Height="95" Margin="10,10,0,0" VerticalAlignment="Top" Width="92" Background="#FF3BB7BD">
+        <Grid x:Name="home_btn" Style="{StaticResource menu_button}" MouseDown="Services_btn_MouseDown" HorizontalAlignment="Left" Height="95" Margin="10,10,0,0" VerticalAlignment="Top" Width="92" >
 
             <Image Margin="15,10,17,25" Source="Resources/home-page.png" Stretch="Fill"/>
             <TextBlock HorizontalAlignment="Left" Margin="22,64,0,-4" TextWrapping="Wrap" Text="Home" FontFamily="Inter"/>
