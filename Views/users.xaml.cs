@@ -24,7 +24,7 @@ namespace Solutec.Views
     
     public partial class users : Page
     {
-        private MainWindow mainw = new MainWindow();
+        private Solutec.MainWindow mainw;
         Models.solutecEntities context = new Models.solutecEntities();
         CollectionViewSource usersViewSource;
         public users(MainWindow mainWin)

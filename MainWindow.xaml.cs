@@ -19,14 +19,36 @@ namespace Solutec
     /// <summary>
     /// Lógica de interacción para MainWindow.xaml
     /// </summary>
+    /// 
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public Models.users user = new Models.users();
+
+        public MainWindow(Models.users nuser)
         {
             InitializeComponent();
-
-            Services_btn_MouseDown(home_btn,null);
-           
+            user = nuser;
+            switch (user.user_type)
+            {
+                case 1:
+                    services_btn.Visibility = Visibility.Visible;
+                    customers_btn.Visibility = Visibility.Visible;
+                    brands_btn.Visibility = Visibility.Visible;
+                    users_btn.Visibility = Visibility.Visible;
+                    break;
+                case 2:
+                    services_btn.Visibility = Visibility.Visible;
+                    customers_btn.Visibility = Visibility.Visible;
+                    brands_btn.Visibility = Visibility.Visible;
+                    users_btn.Visibility = Visibility.Hidden;
+                    break;
+                case 3:
+                    services_btn.Visibility = Visibility.Visible;
+                    customers_btn.Visibility = Visibility.Hidden;
+                    brands_btn.Visibility = Visibility.Hidden;
+                    users_btn.Visibility = Visibility.Hidden;
+                    break;
+            }
         }
 
         public string GetSHA1(String text)

@@ -22,7 +22,7 @@ namespace Solutec.Views
     /// </summary>
     public partial class new_user : Page
     {
-        private MainWindow mainw = new MainWindow();
+        private Solutec.MainWindow mainw;
         private Solutec.Models.users user = new Solutec.Models.users();
         //Create constructor
         public new_user(MainWindow mainwin)

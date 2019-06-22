@@ -1,0 +1,41 @@
+﻿<Window x:Class="Solutec.login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Solutec"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="login" Height="450" Width="300" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <RoutedUICommand x:Key="loginCommand" Text="Iniciar"/>
+        
+    </Window.Resources>
+
+    <Window.CommandBindings>
+        <CommandBinding Command="{StaticResource loginCommand}" Executed="CommandBinding_Executed"/>
+    </Window.CommandBindings>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Fill="#FF3BB7BD" HorizontalAlignment="Left" Height="158" VerticalAlignment="Top" Width="300" Grid.ColumnSpan="2"/>
+        <Grid Grid.Column="1" HorizontalAlignment="Left" Height="378" Margin="27,40,0,0" VerticalAlignment="Top" Width="245" Background="White">
+            <Grid.Effect>
+                <DropShadowEffect BlurRadius="10" Direction="265" Opacity="0.5"/>
+            </Grid.Effect>
+            <Label Content="Iniciar Sesion" HorizontalAlignment="Left" Margin="76,50,0,0" VerticalAlignment="Top" FontFamily="Inter" FontWeight="Bold" FontSize="14"/>
+            <Label Content="SOLUTEC" HorizontalAlignment="Left" Margin="74,16,0,0" VerticalAlignment="Top" FontFamily="Inter" FontSize="20" FontWeight="UltraBlack" Foreground="Black" BorderBrush="#FF171719"/>
+            <TextBox x:Name="txtusername" HorizontalAlignment="Left" Height="33" Margin="31,127,0,0" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Usuario" VerticalAlignment="Top" Width="189" FontFamily="Inter"/>
+            <PasswordBox x:Name="txtPassword" PasswordChar="*" materialDesign:HintAssist.Hint="Contraseña" HorizontalAlignment="Left" VerticalAlignment="Top" Width="189" Margin="31,212,0,0" RenderTransformOrigin="0.158,-1.88" Height="33"/>
+        </Grid>
+
+        <Button Command="{StaticResource loginCommand}" Grid.ColumnSpan="2" Content="Iniciar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="117,335,0,0" FontFamily="Inter" FontSize="12"/>
+
+
+
+    </Grid>
+</Window>
