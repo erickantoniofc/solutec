@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Erick Flores\Desktop\Solutec\Solutec\App.xaml
-4957137548
+9-2054809699
 21628168987
-16-671966001
+22-1413259000
 27-828133116
-MainWindow.xaml;Views\brands.xaml;Views\home.xaml;Views\new_brand.xaml;
+MainWindow.xaml;Views\blank.xaml;Views\brands.xaml;Views\customers.xaml;Views\home.xaml;Views\new_brand.xaml;Views\new_user.xaml;Views\services.xaml;Views\users.xaml;
 
 False
 

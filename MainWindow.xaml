@@ -129,7 +129,7 @@
             <TextBlock HorizontalAlignment="Left" Margin="712,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" Foreground="#DDFFFFFF" Width="343"><Run Text="Solutec -"/><Run Text=" Sistema de reparaciones y garantias"/></TextBlock>
             <TextBlock HorizontalAlignment="Left" Margin="22,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" Foreground="#FFEA4444" Width="343" Text="9 Trabajos pendientes"/>
         </Grid>
-        <Button Click="BtnAction_Click" x:Name="btnAction" Visibility="Hidden" Content="Registrar marca" Grid.Column="1" HorizontalAlignment="Left" Margin="862,46,0,0" Grid.Row="1" VerticalAlignment="Top" Width="154" Grid.RowSpan="2" Height="49" Background="#FF3BB7BD" FontFamily="Inter" FontSize="16"/>
+        <Button Click="BtnAction_Click" x:Name="btnAction" Visibility="Hidden" Content="Registrar marca" Grid.Column="1" HorizontalAlignment="Left" Margin="862,46,0,0" Grid.Row="1" VerticalAlignment="Top" Width="170" Grid.RowSpan="2" Height="49" Background="#FF3BB7BD" FontFamily="Inter" FontSize="16"/>
 
 
 

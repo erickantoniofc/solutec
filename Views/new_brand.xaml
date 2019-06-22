@@ -7,7 +7,9 @@
       xmlns:Models="clr-namespace:Solutec.Models" x:Class="Solutec.Views.new_brand"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Page1" Width="314" Height="574">
+      Title="Page1" Width="314" Height="574"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    >
 
     <Page.Resources>
         <CollectionViewSource x:Key="brandsViewSource" d:DesignSource="{d:DesignInstance {x:Type Models:brands}, CreateList=True}"/>
@@ -39,15 +41,15 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Nombre comercial: " FontFamily="Inter" FontSize="14"/>
-            <TextBox x:Name="commercial_nameTextBox" Width="120" VerticalAlignment="Center" Text="{Binding commercial_name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3,3,0,10" Height="34" HorizontalAlignment="Left" Grid.Column="1" FontFamily="Inter" FontSize="14"/>
+            <TextBox materialDesign:HintAssist.Hint="Nombre Comercial" x:Name="commercial_nameTextBox" Width="120" VerticalAlignment="Center" Text="{Binding commercial_name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3,3,0,10" Height="34" HorizontalAlignment="Left" Grid.Column="1" FontFamily="Inter" FontSize="14"/>
 
-            <Label Content="nit:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center" FontFamily="Inter" FontSize="14"/>
-            <TextBox x:Name="nitTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="34" Margin="3" Grid.Row="1" Text="{Binding nit, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" FontFamily="Inter" FontSize="14"/>
+            <Label Content="NIT:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center" FontFamily="Inter" FontSize="14"/>
+            <TextBox materialDesign:HintAssist.Hint="NIT" x:Name="nitTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="34" Margin="3" Grid.Row="1" Text="{Binding nit, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" FontFamily="Inter" FontSize="14"/>
 
-            <Label Content="nrc:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center" FontFamily="Inter" FontSize="14"/>
-            <TextBox x:Name="nrcTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="34" Margin="3" Grid.Row="2" Text="{Binding nrc, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" FontFamily="Inter" FontSize="14"/>
+            <Label Content="NRC:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center" FontFamily="Inter" FontSize="14"/>
+            <TextBox materialDesign:HintAssist.Hint="NRC" x:Name="nrcTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="34" Margin="3" Grid.Row="2" Text="{Binding nrc, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" FontFamily="Inter" FontSize="14"/>
 
-            <Label Content="start date:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center" FontFamily="Inter" FontSize="14"/>
+            <Label Content="Contrato desde:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center" FontFamily="Inter" FontSize="14"/>
             <DatePicker x:Name="start_dateDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="3" SelectedDate="{Binding start_date, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" FontFamily="Inter" FontSize="14"/>
         </Grid>
 

@@ -29,4 +29,14 @@ C:\Users\Erick Flores\Desktop\Solutec\Solutec\obj\Debug\Views\new_brand.g.cs
 C:\Users\Erick Flores\Desktop\Solutec\Solutec\obj\Debug\Views\new_brand.baml
 C:\Users\Erick Flores\Desktop\Solutec\Solutec\obj\Debug\Views\home.g.cs
 C:\Users\Erick Flores\Desktop\Solutec\Solutec\obj\Debug\Views\home.baml
+C:\Users\Erick Flores\Desktop\Solutec\Solutec\obj\Debug\Views\new_user.g.cs
+C:\Users\Erick Flores\Desktop\Solutec\Solutec\obj\Debug\Views\users.g.cs
+C:\Users\Erick Flores\Desktop\Solutec\Solutec\obj\Debug\Views\new_user.baml
+C:\Users\Erick Flores\Desktop\Solutec\Solutec\obj\Debug\Views\users.baml
+C:\Users\Erick Flores\Desktop\Solutec\Solutec\obj\Debug\Views\blank.g.cs
+C:\Users\Erick Flores\Desktop\Solutec\Solutec\obj\Debug\Views\customers.g.cs
+C:\Users\Erick Flores\Desktop\Solutec\Solutec\obj\Debug\Views\services.g.cs
+C:\Users\Erick Flores\Desktop\Solutec\Solutec\obj\Debug\Views\blank.baml
+C:\Users\Erick Flores\Desktop\Solutec\Solutec\obj\Debug\Views\customers.baml
+C:\Users\Erick Flores\Desktop\Solutec\Solutec\obj\Debug\Views\services.baml
 C:\Users\Erick Flores\Desktop\Solutec\Solutec\obj\Debug\Solutec.csprojAssemblyReference.cache

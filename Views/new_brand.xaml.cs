@@ -56,6 +56,11 @@ namespace Solutec.Views
         private void SaveCommandHandler (Object sender, ExecutedRoutedEventArgs e)
         {
            
+            if(commercial_nameTextBox.Text == "")
+            {
+                MessageBox.Show("El campo nombre comercial no puede estar vacio)");
+                return;
+            }
             try
             {
                 using (Models.solutecEntities context = new Models.solutecEntities())
@@ -76,7 +81,7 @@ namespace Solutec.Views
                     start_dateDatePicker.IsEnabled = false;
                     btnSave.IsEnabled = false;
                     
-                    mainw.brandSuccesful();
+                    mainw.Succesful("brand");
                     
                 }
             }
@@ -104,6 +109,12 @@ namespace Solutec.Views
 
         private void ModifyCommand_Handler(object sender, ExecutedRoutedEventArgs e)
         {
+            if (commercial_nameTextBox.Text == "")
+            {
+                MessageBox.Show("El campo nombre comercial no puede estar vacio)");
+                return;
+            }
+
             var mbrand = new Solutec.Models.brands { id_brand = brand.id_brand };
 
             using (var context = new Solutec.Models.solutecEntities())
@@ -124,7 +135,7 @@ namespace Solutec.Views
 
             lblNotification.Content = "La marca ha sido modificada";
             notification.Visibility = Visibility.Visible;
-            mainw.brandSuccesful();
+            mainw.Succesful("brand");
         }
 
         private void DeleteCommand_Handler(object sender, ExecutedRoutedEventArgs e)
@@ -145,7 +156,7 @@ namespace Solutec.Views
 
             lblNotification.Content = "La marca ha sido eliminada";
             notification.Visibility = Visibility.Visible;
-            mainw.brandSuccesful();
+            mainw.Succesful("brand");
             commercial_nameTextBox.IsEnabled = false;
             nitTextBox.IsEnabled = false;
             nrcTextBox.IsEnabled = false;
