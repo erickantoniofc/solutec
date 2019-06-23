@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:Models="clr-namespace:Solutec.Models"
       xmlns:local="clr-namespace:Solutec.Views"
+      xmlns:converters="clr-namespace:Solutec.Converters"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="customers" Width="774" Height="576" Loaded="Page_Loaded">
@@ -12,6 +13,7 @@
     <Page.Resources>
         <CollectionViewSource x:Key="solutecEntitiesViewSource" d:DesignSource="{d:DesignInstance {x:Type Models:solutecEntities}, CreateList=True}"/>
         <CollectionViewSource x:Key="solutecEntitiescutomersViewSource" Source="{Binding customers, Source={StaticResource solutecEntitiesViewSource}}"/>
+        <converters:CustomerTypeValueConverter x:Key="CustomerTypeConverter"/>
     </Page.Resources>
 
     <Grid x:Name="grid1" DataContext="{StaticResource solutecEntitiescutomersViewSource}">
@@ -25,8 +27,8 @@
                 <DataGridTextColumn x:Name="duiColumn" Binding="{Binding dui}" Header="DUI" Width="50"/>
                 <DataGridTextColumn x:Name="addressColumn" Binding="{Binding address}" Header="Direccion" Width="120"/>
                 <DataGridTextColumn x:Name="phone_numberColumn" Binding="{Binding phone_number}" Header="Contacto" Width="50"/>
-                <DataGridTextColumn x:Name="emailColumn" Binding="{Binding email}" Header="E-mail" Width="100"/>
-                <DataGridTextColumn x:Name="customer_typeColumn" Binding="{Binding customer_type}" Header="Tipo" Width="100"/>
+                <!--<DataGridTextColumn x:Name="emailColumn" Binding="{Binding email}" Header="E-mail" Width="100"/>-->
+                <DataGridTextColumn x:Name="customer_typeColumn" Binding="{Binding customer_type, Converter={StaticResource CustomerTypeConverter}}" Header="Tipo" Width="100"/>
             </DataGrid.Columns>
         </DataGrid> 
     </Grid>

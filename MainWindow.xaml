@@ -20,6 +20,8 @@
         Title="MainWindow" Height="800" Width="1200" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
+        <Image Source="Resources/inside.png" x:Key="minimize" />
+        <Image Source="Resources/logout.png" x:Key="logout" />
         <Style x:Key="menu_button" TargetType="Grid" >
             <Setter Property="Background" Value="Transparent"></Setter>
             <Style.Triggers>
@@ -84,8 +86,8 @@
                 <DropShadowEffect Opacity="0.25" BlurRadius="20" Direction="350" ShadowDepth="3"/>
             </Grid.Effect>
 
-            <Button Content="" HorizontalAlignment="Left" Margin="32,724,0,0" VerticalAlignment="Top" Width="30" FontSize="24" FontWeight="Bold" Height="30" Padding="0,1,0,0" Background="#FFEA4444" BorderBrush="{x:Null}" Click="ButtonClose_Click" Foreground="{x:Null}"/>
-            <Button Content="" HorizontalAlignment="Left" Margin="32,672,0,0" VerticalAlignment="Top" Width="30" FontSize="24" FontWeight="Bold" Height="30" Padding="0,1,0,0" Background="#FF3BB7BD" BorderBrush="{x:Null}" Click="ButtonMinimize_Click"/>
+            <Button Content="{StaticResource logout}" HorizontalAlignment="Left" Margin="32,724,0,0" VerticalAlignment="Top" Width="30" FontSize="24" FontWeight="Bold" Height="30" Padding="0,1,0,0" Background="#FFEA4444" BorderBrush="{x:Null}" Click="ButtonClose_Click" Foreground="{x:Null}"/>
+            <Button  Content="{StaticResource minimize}" HorizontalAlignment="Left" Margin="32,672,0,0" VerticalAlignment="Top" Width="30" FontSize="24" FontWeight="Bold" Height="30" Padding="0,1,0,0" Background="#FF3BB7BD" BorderBrush="{x:Null}" Click="ButtonMinimize_Click"/>
 
         </Grid>
 

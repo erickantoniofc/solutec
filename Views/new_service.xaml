@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:Solutec.Views"
       xmlns:Models="clr-namespace:Solutec.Models" x:Class="Solutec.Views.new_service"
       mc:Ignorable="d" 
+    xmlns:converters="clr-namespace:Solutec.Converters"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" d:DesignWidth="800" Width="314" Height="740.667"
       Title="new_service" Loaded="Page_Loaded">
 
@@ -15,12 +16,15 @@
         <RoutedUICommand x:Key="saveCommand" Text="Guardar"/>
         <RoutedUICommand x:Key="modifyCommand" Text="Modificar"/>
         <RoutedUICommand x:Key="deleteCommand" Text="Eliminar"/>
+        <RoutedUICommand x:Key="saveAdvancesCommand" Text="Agregar"/>
+        <converters:TypeAdvancesConverter x:Key="typeAdvancesConverter"/>
     </Page.Resources>
 
     <Page.CommandBindings>
         <CommandBinding Command="{StaticResource saveCommand}" Executed="CommandBinding_Executed"/>
         <CommandBinding Command="{StaticResource modifyCommand}" Executed="CommandBinding_Executed_1"/>
         <CommandBinding Command="{StaticResource deleteCommand}" Executed="CommandBinding_Executed_2"/>
+        <CommandBinding Command="{StaticResource saveAdvancesCommand}" Executed="CommandBinding_Executed_3"/>
     </Page.CommandBindings>
 
     <Grid>
@@ -90,10 +94,10 @@
                     <ComboBoxItem>Finalizado</ComboBoxItem>
                 </ComboBox>
                 <TextBox x:Name="detailTxt" materialDesign:HintAssist.Hint="Detalle" HorizontalAlignment="Left" Height="30" Margin="91,6,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" FontFamily="inter" FontSize="12"/>
-                <Button x:Name="btnAddDetail" Content="+" FontFamily="inter" FontSize="12" FontWeight="UltraBlack" HorizontalAlignment="Left" Padding="0,0,0,0" Margin="234,10,0,0" VerticalAlignment="Top" Width="27" Height="26"/>
+                <Button Command="{StaticResource saveAdvancesCommand}" x:Name="btnAddDetail" Content="+" FontFamily="inter" FontSize="12" FontWeight="UltraBlack" HorizontalAlignment="Left" Padding="0,0,0,0" Margin="234,10,0,0" VerticalAlignment="Top" Width="27" Height="26"/>
                 <DataGrid x:Name="advancesDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="0,41,0,22" RowDetailsVisibilityMode="VisibleWhenSelected">
                     <DataGrid.Columns>
-                        <DataGridTextColumn x:Name="advance_typeColumn" Binding="{Binding advance_type}" Header="advance type" Width="SizeToHeader"/>
+                        <DataGridTextColumn x:Name="advance_typeColumn" Binding="{Binding advance_type, Converter={StaticResource typeAdvancesConverter}}" Header="advance type" Width="SizeToHeader"/>
                         <DataGridTextColumn x:Name="advance_detailColumn" Binding="{Binding advance_detail}" Header="advance detail" Width="SizeToHeader"/>
                     </DataGrid.Columns>
                 </DataGrid>

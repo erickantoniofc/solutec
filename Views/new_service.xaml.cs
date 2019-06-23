@@ -252,5 +252,40 @@ namespace Solutec.Views
 
 
         }
+
+        private void CommandBinding_Executed_3(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (detailTxt.Text == "")
+            {
+                MessageBox.Show("El campo detalle no debe estar vacio");
+                return;
+            }
+            Models.advances adv = new Models.advances();
+
+            using(context)
+            {
+                adv.advance_detail = detailTxt.Text;
+                short adv_type = 0;
+                switch (nivel_cmb.Text)
+                {
+                    case "Diagnostico":
+                        adv_type = 1;
+                        break;
+                    case "En proceso":
+                        adv_type = 2;
+                        break;
+                    case "Finalizado":
+                        adv_type = 3;
+                        break;
+                }
+                adv.advance_type = adv_type;
+                adv.id_service = service.id_service;
+                context.advances.Add(adv);
+                context.SaveChanges();
+                var adv_query = from advance in context.advances where advance.id_service == service.id_service select advance;
+                advancesDataGrid.ItemsSource = adv_query.ToList();
+            }
+           
+        }
     }
 }

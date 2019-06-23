@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Solutec.Views"
+      xmlns:converters="clr-namespace:Solutec.Converters"
       xmlns:Models="clr-namespace:Solutec.Models" x:Class="Solutec.Views.services"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
@@ -12,6 +13,9 @@
     <Page.Resources>
         <CollectionViewSource x:Key="solutecEntitiesViewSource" d:DesignSource="{d:DesignInstance {x:Type Models:solutecEntities}, CreateList=True}"/>
         <CollectionViewSource x:Key="solutecEntitiesservicesViewSource" Source="{Binding services, Source={StaticResource solutecEntitiesViewSource}}"/>
+        <converters:CustomerNameConverter x:Key="CNameConverter" />
+        <converters:MarcaNameConverter x:Key="BNameConverter" />
+        <converters:UserNameTechnicalConverter x:Key="UNameConverter" />
     </Page.Resources>
 
     <Grid DataContext="{StaticResource solutecEntitiesservicesViewSource}">
@@ -21,11 +25,12 @@
 
         <DataGrid MouseDoubleClick="ServicesDataGrid_MouseDoubleClick" x:Name="servicesDataGrid" IsReadOnly="True" Margin="10,120,20,10" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" Background="{x:Null}" Focusable="False">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="commercial_invoiceColumn" Width="SizeToHeader" Header="commercial invoice" Binding="{Binding commercial_invoice}"/>
-                <DataGridTextColumn x:Name="id_brandColumn" Width="SizeToHeader" Header="id brand" Binding="{Binding id_brand}"/>
-                <DataGridTextColumn x:Name="id_customerColumn" Width="SizeToHeader" Header="id customer" Binding="{Binding id_customer}"/>
-                <DataGridTextColumn x:Name="id_serviceColumn" Width="SizeToHeader" Header="id service" Binding="{Binding id_service}"/>
-                <DataGridTemplateColumn x:Name="in_dateColumn" Width="SizeToHeader" Header="in date">
+                <DataGridTextColumn x:Name="id_serviceColumn" Width="SizeToHeader" Header="ID Servicio" Binding="{Binding id_service}"/>
+
+                <DataGridTextColumn x:Name="commercial_invoiceColumn" Width="SizeToHeader" Header="Factura" Binding="{Binding commercial_invoice}"/>
+                <DataGridTextColumn x:Name="id_brandColumn" Width="SizeToHeader" Header="Marca" Binding="{Binding id_brand, Converter={StaticResource BNameConverter}}"/>
+                <DataGridTextColumn x:Name="id_customerColumn" Width="SizeToHeader" Header="Cliente" Binding="{Binding id_customer, Converter={StaticResource CNameConverter}}"/>
+                <DataGridTemplateColumn x:Name="in_dateColumn" Width="SizeToHeader" Header="Fecha de Ingreso">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <DatePicker SelectedDate="{Binding in_date, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
@@ -33,8 +38,8 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridCheckBoxColumn x:Name="is_warrantyColumn" Width="SizeToHeader" Header="is warranty" Binding="{Binding is_warranty}"/>
-                <DataGridTextColumn x:Name="modelColumn" Width="SizeToHeader" Header="model" Binding="{Binding model}"/>
-                <DataGridTemplateColumn x:Name="out_dateColumn" Width="SizeToHeader" Header="out date">
+                <DataGridTextColumn x:Name="modelColumn" Width="SizeToHeader" Header="Modelo" Binding="{Binding model}"/>
+                <!--<DataGridTemplateColumn x:Name="out_dateColumn" Width="SizeToHeader" Header="out date">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <DatePicker SelectedDate="{Binding out_date, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
@@ -47,8 +52,8 @@
                             <DatePicker SelectedDate="{Binding purchase_date, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTextColumn x:Name="technical_operatorColumn" Width="SizeToHeader" Header="technical operator" Binding="{Binding technical_operator}"/>
+                </DataGridTemplateColumn>-->
+                <DataGridTextColumn x:Name="technical_operatorColumn" Width="SizeToHeader" Header="technical operator" Binding="{Binding technical_operator, Converter={StaticResource UNameConverter}}"/>
                 <DataGridTextColumn x:Name="unique_referenceColumn" Width="SizeToHeader" Header="unique reference" Binding="{Binding unique_reference}"/>
             </DataGrid.Columns>
         </DataGrid>
