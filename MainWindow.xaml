@@ -54,7 +54,7 @@
             <Grid.Effect>
                 <DropShadowEffect Direction="325" ShadowDepth="2" Opacity="0.25" BlurRadius="8"/>
             </Grid.Effect>
-            <TextBlock HorizontalAlignment="Left" Margin="890,-20,-34,-16" TextWrapping="Wrap" Text="LOGO" VerticalAlignment="Top" FontFamily="Inter" FontWeight="Bold" FontSize="60" Width="232" Foreground="#FF18777C"/>
+            <TextBlock HorizontalAlignment="Left" Margin="763,0,0,0" TextWrapping="Wrap" Text="SOLUTEC®" VerticalAlignment="Top" FontFamily="Inter" FontWeight="Bold" FontSize="60" Width="325" Foreground="#FF18777C"/>
         </Grid>
 
         <!--Details context menu-->
