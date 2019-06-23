@@ -1,14 +1,58 @@
-﻿<Page x:Class="Solutec.Views.services"
+﻿<Page
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Solutec.Views"
+      xmlns:Models="clr-namespace:Solutec.Models" x:Class="Solutec.Views.services"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="services">
+      Title="services" Width="774" Height="576" Loaded="Page_Loaded">
 
-    <Grid>
-        
+    <Page.Resources>
+        <CollectionViewSource x:Key="solutecEntitiesViewSource" d:DesignSource="{d:DesignInstance {x:Type Models:solutecEntities}, CreateList=True}"/>
+        <CollectionViewSource x:Key="solutecEntitiesservicesViewSource" Source="{Binding services, Source={StaticResource solutecEntitiesViewSource}}"/>
+    </Page.Resources>
+
+    <Grid DataContext="{StaticResource solutecEntitiesservicesViewSource}">
+        <Label Content="Buscar:" HorizontalAlignment="Left" Margin="20,50,0,0" VerticalAlignment="Top" FontFamily="Inter" FontSize="16"/>
+        <TextBox x:Name="txt_ServiceSearch" HorizontalAlignment="Left" Height="39" Margin="91,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="663" SpellCheck.IsEnabled="True" FontFamily="Inter" FontSize="16" TextChanged="Txt_ServiceSearch_TextChanged"/>
+
+
+        <DataGrid MouseDoubleClick="ServicesDataGrid_MouseDoubleClick" x:Name="servicesDataGrid" IsReadOnly="True" Margin="10,120,20,10" ItemsSource="{Binding}" EnableRowVirtualization="True" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" Background="{x:Null}" Focusable="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="commercial_invoiceColumn" Width="SizeToHeader" Header="commercial invoice" Binding="{Binding commercial_invoice}"/>
+                <DataGridTextColumn x:Name="id_brandColumn" Width="SizeToHeader" Header="id brand" Binding="{Binding id_brand}"/>
+                <DataGridTextColumn x:Name="id_customerColumn" Width="SizeToHeader" Header="id customer" Binding="{Binding id_customer}"/>
+                <DataGridTextColumn x:Name="id_serviceColumn" Width="SizeToHeader" Header="id service" Binding="{Binding id_service}"/>
+                <DataGridTemplateColumn x:Name="in_dateColumn" Width="SizeToHeader" Header="in date">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding in_date, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridCheckBoxColumn x:Name="is_warrantyColumn" Width="SizeToHeader" Header="is warranty" Binding="{Binding is_warranty}"/>
+                <DataGridTextColumn x:Name="modelColumn" Width="SizeToHeader" Header="model" Binding="{Binding model}"/>
+                <DataGridTemplateColumn x:Name="out_dateColumn" Width="SizeToHeader" Header="out date">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding out_date, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn x:Name="purchase_dateColumn" Width="SizeToHeader" Header="purchase date">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding purchase_date, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn x:Name="technical_operatorColumn" Width="SizeToHeader" Header="technical operator" Binding="{Binding technical_operator}"/>
+                <DataGridTextColumn x:Name="unique_referenceColumn" Width="SizeToHeader" Header="unique reference" Binding="{Binding unique_reference}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
     </Grid>
 </Page>

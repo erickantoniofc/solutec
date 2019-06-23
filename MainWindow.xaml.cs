@@ -136,7 +136,7 @@ namespace Solutec
                     home_txt.Text = "Servicios";
                     btnAction.Visibility = Visibility.Visible;
                     btnAction.Content = "Registrar servicio";
-                    Solutec.Views.services service = new Solutec.Views.services();
+                    Solutec.Views.services service = new Solutec.Views.services(this);
                     primary_frame.NavigationService.Navigate(service);
                     secondary_frame.NavigationService.Navigate(blank);
                     break;
@@ -185,6 +185,10 @@ namespace Solutec
                     Solutec.Views.customers customer = new Solutec.Views.customers(this);
                     primary_frame.NavigationService.Navigate(customer);
                     break;
+                case "service":
+                    Solutec.Views.services service = new Solutec.Views.services(this);
+                    primary_frame.NavigationService.Navigate(service);
+                    break;
             }
     }
 
@@ -206,6 +210,12 @@ namespace Solutec
             Solutec.Views.new_customer newCustomer = new Solutec.Views.new_customer(this, customer);
             secondary_frame.NavigationService.Navigate(newCustomer);
         }
+
+        public void serviceSelected(Models.services service)
+        {
+            Solutec.Views.new_service newService = new Solutec.Views.new_service(this, service);
+            secondary_frame.NavigationService.Navigate(newService);
+        }
         private void BtnAction_Click(object sender, RoutedEventArgs e)
         {
             Button btn = sender as Button;
@@ -222,6 +232,10 @@ namespace Solutec
                 case "Registrar cliente":
                     Solutec.Views.new_customer newCustomer = new Solutec.Views.new_customer(this);
                     secondary_frame.NavigationService.Navigate(newCustomer);
+                    break;
+                case "Registrar servicio":
+                    Solutec.Views.new_service newService = new Views.new_service(this);
+                    secondary_frame.NavigationService.Navigate(newService);
                     break;
             }
         }

@@ -19,6 +19,7 @@
     <Grid x:Name="grid1"  DataContext="{StaticResource solutecEntitiesbrandsViewSource}">
         <Label Content="Buscar:" HorizontalAlignment="Left" Margin="20,50,0,0" VerticalAlignment="Top" FontFamily="Inter" FontSize="16"/>
         <TextBox x:Name="txt_BrandSearch" HorizontalAlignment="Left" Height="39" Margin="91,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="663" SpellCheck.IsEnabled="True" FontFamily="Inter" FontSize="16" TextChanged="TextBox_TextChanged"/>
+        
         <DataGrid MouseDoubleClick="BrandsDataGrid_MouseDoubleClick" IsReadOnly="True" x:Name="brandsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="20,126,20,37" CanUserAddRows="False" CanUserDeleteRows="False" Background="{x:Null}" Focusable="False">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="idColumn" Binding="{Binding id_brand}" Header="ID" Width="35"/>

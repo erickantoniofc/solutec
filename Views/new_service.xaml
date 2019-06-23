@@ -1,0 +1,118 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Solutec.Views"
+      xmlns:Models="clr-namespace:Solutec.Models" x:Class="Solutec.Views.new_service"
+      mc:Ignorable="d" 
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" d:DesignWidth="800" Width="314" Height="740.667"
+      Title="new_service" Loaded="Page_Loaded">
+
+    <Page.Resources>
+        <CollectionViewSource x:Key="servicesViewSource" d:DesignSource="{d:DesignInstance {x:Type Models:services}, CreateList=True}"/>
+        <CollectionViewSource x:Key="servicesadvancesViewSource" Source="{Binding advances, Source={StaticResource servicesViewSource}}"/>
+        <RoutedUICommand x:Key="saveCommand" Text="Guardar"/>
+        <RoutedUICommand x:Key="modifyCommand" Text="Modificar"/>
+        <RoutedUICommand x:Key="deleteCommand" Text="Eliminar"/>
+    </Page.Resources>
+
+    <Page.CommandBindings>
+        <CommandBinding Command="{StaticResource saveCommand}" Executed="CommandBinding_Executed"/>
+        <CommandBinding Command="{StaticResource modifyCommand}" Executed="CommandBinding_Executed_1"/>
+        <CommandBinding Command="{StaticResource deleteCommand}" Executed="CommandBinding_Executed_2"/>
+    </Page.CommandBindings>
+
+    <Grid>
+        <Label x:Name="newBrand" Content="Nuevo servicio" HorizontalAlignment="Left" Margin="83,21,0,0" VerticalAlignment="Top" FontFamily="Inter" FontSize="20" FontWeight="ExtraBlack"/>
+        <ComboBox DisplayMemberPath="full_name" SelectedValuePath="id_customer" materialDesign:HintAssist.Hint="Cliente" x:Name="clientCmb" HorizontalAlignment="Left" Margin="24,94,0,0" VerticalAlignment="Top" Width="120" Height="30" FontFamily="Inter" FontSize="12"/>
+        <ComboBox x:Name="brandCmb" materialDesign:HintAssist.Hint="Marca" HorizontalAlignment="Left" Margin="173,94,0,0" VerticalAlignment="Top" Width="120" Height="30" FontFamily="Inter" FontSize="12"/>
+        <Grid x:Name="grid1" DataContext="{StaticResource servicesViewSource}" HorizontalAlignment="Left" Margin="173,139,0,0" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBox materialDesign:HintAssist.Hint="Factura N" x:Name="commercial_invoiceTextBox" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="0" Text="{Binding commercial_invoice, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" Height="30" FontFamily="Inter" FontSize="12"/>
+        </Grid>
+        <Grid x:Name="grid2" DataContext="{StaticResource servicesViewSource}" HorizontalAlignment="Left" Margin="169,180,0,0" VerticalAlignment="Top" Height="47">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" MinWidth="106"/>
+                <ColumnDefinition Width="Auto" MinWidth="30"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="Fecha de compra:" Grid.Column="0" HorizontalAlignment="Left" Margin="10,0,0,14" Grid.Row="0" VerticalAlignment="Center" Height="26" Width="103" Grid.ColumnSpan="2"/>
+            <DatePicker Height="30" x:Name="purchase_dateDatePicker" HorizontalAlignment="Left" Margin="10,18,0,-9" Grid.Row="0" SelectedDate="{Binding purchase_date, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" RenderTransformOrigin="-0.4,0.4" Width="116" Grid.ColumnSpan="2"/>
+        </Grid>
+        <Grid x:Name="grid3" DataContext="{StaticResource servicesViewSource}" HorizontalAlignment="Left" Margin="24,139,0,0" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBox materialDesign:HintAssist.Hint="Modelo" x:Name="modelTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="3" Grid.Row="0" Text="{Binding model, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" FontFamily="inter" FontSize="12"/>
+        </Grid>
+        <Grid x:Name="grid4" DataContext="{StaticResource servicesViewSource}" HorizontalAlignment="Left" Margin="24,190,0,0" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBox materialDesign:HintAssist.Hint="IMEI o Serie" x:Name="unique_referenceTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="3" Grid.Row="0" Text="{Binding unique_reference, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" FontFamily="inter" FontSize="12"/>
+        </Grid>
+        <Grid x:Name="grid5" DataContext="{StaticResource servicesViewSource}" HorizontalAlignment="Left" Margin="24,245,0,0" VerticalAlignment="Top" Width="269">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" MinWidth="172"/>
+                <ColumnDefinition Width="Auto" MinWidth="95"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="Fecha de entrada:" Grid.Column="0" HorizontalAlignment="Left" Margin="0,3" Grid.Row="0" VerticalAlignment="Center" Height="26" Width="104"/>
+            <DatePicker x:Name="in_dateDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3,4,0,4" Grid.Row="0" SelectedDate="{Binding in_date, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Height="24" Width="86"/>
+        </Grid>
+        <ComboBox SelectedValuePath="id_user" DisplayMemberPath="user" x:Name="userCmb" materialDesign:HintAssist.Hint="Tecnico encargado" HorizontalAlignment="Left" Margin="24,282,0,0" VerticalAlignment="Top" Width="269" Height="30" FontFamily="inter" FontSize="12"/>
+        <RadioButton Checked="Direct_serviceCmb_Checked" GroupName="service_type" x:Name="direct_serviceCmb" Content="Servicio directo" HorizontalAlignment="Left" Margin="41,71,0,0" VerticalAlignment="Top"/>
+        <RadioButton Checked="Direct_serviceCmb_Checked" GroupName="service_type" x:Name="thirdPArty_serviceCmb" Content="Servicio por garantia" HorizontalAlignment="Left" Margin="173,71,0,0" VerticalAlignment="Top"/>
+        <GroupBox x:Name="group"  Header="Detalles" HorizontalAlignment="Left" Height="226" Margin="10,317,0,0" VerticalAlignment="Top" Width="289">
+            <Grid DataContext="{StaticResource servicesadvancesViewSource}">
+                <ComboBox x:Name="nivel_cmb" FontFamily="inter" FontSize="12" materialDesign:HintAssist.Hint="Nivel" Margin="15,6,185,0" VerticalAlignment="Top" Height="30">
+                    <ComboBoxItem IsSelected="True">Diagnostico</ComboBoxItem>
+                    <ComboBoxItem>En proceso</ComboBoxItem>
+                    <ComboBoxItem>Finalizado</ComboBoxItem>
+                </ComboBox>
+                <TextBox x:Name="detailTxt" materialDesign:HintAssist.Hint="Detalle" HorizontalAlignment="Left" Height="30" Margin="91,6,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" FontFamily="inter" FontSize="12"/>
+                <Button x:Name="btnAddDetail" Content="+" FontFamily="inter" FontSize="12" FontWeight="UltraBlack" HorizontalAlignment="Left" Padding="0,0,0,0" Margin="234,10,0,0" VerticalAlignment="Top" Width="27" Height="26"/>
+                <DataGrid x:Name="advancesDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="0,41,0,22" RowDetailsVisibilityMode="VisibleWhenSelected">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn x:Name="advance_typeColumn" Binding="{Binding advance_type}" Header="advance type" Width="SizeToHeader"/>
+                        <DataGridTextColumn x:Name="advance_detailColumn" Binding="{Binding advance_detail}" Header="advance detail" Width="SizeToHeader"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </GroupBox>
+        <StackPanel HorizontalAlignment="Left" Height="37" Margin="49,527,0,0" VerticalAlignment="Top" Width="232" DataContext="{StaticResource servicesViewSource}">
+            <Button x:Name="btnSave" Content="Guardar servicio" Command="{StaticResource saveCommand}" FontFamily="Inter" FontWeight="SemiBold"/>
+
+        </StackPanel>
+        <Grid>
+            <Button x:Name="btnModify" Content="Modificar servicio" Command="{StaticResource modifyCommand}" Margin="54,545,160,164" Background="#FF1FA4D6" FontFamily="Inter" FontWeight="SemiBold" IsCancel="True" BorderBrush="{x:Null}"/>
+            <Button x:Name="btnDelete" Content="Eliminar servicio" Margin="177,545,49,164" Command="{StaticResource deleteCommand}" Background="#FFE05C62" FontFamily="Inter" FontWeight="SemiBold" IsCancel="True" BorderBrush="{x:Null}"/>
+
+        </Grid>
+        <Grid x:Name="notification" HorizontalAlignment="Left" Height="70" VerticalAlignment="Top" Width="314" Opacity="1.0" Margin="0,661,0,0">
+
+            <Label x:Name="lblNotification" Content="¡Cliente registrado exitosamente!" HorizontalAlignment="Left" Margin="52,-81,0,0" VerticalAlignment="Top" Height="50" Width="248" FontFamily="Inter" FontSize="14" Foreground="#DD000000" FontWeight="Black" Background="{x:Null}"/>
+            <Image HorizontalAlignment="Left" Height="25" Margin="22,-73,0,0" VerticalAlignment="Top" Width="30" Source="/Solutec;component/Resources/success.png"/>
+        </Grid>
+
+    </Grid>
+</Page>
